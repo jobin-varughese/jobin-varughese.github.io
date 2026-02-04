@@ -1,39 +1,52 @@
----
-layout: default
-title : Homepage
-navbar_title: Home
----
-
-<div class="row">
-    <div class="col-lg-3 col-md-4">
-        {% include widgets/profile_card_mini.html %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jobin Varughese - CSCW</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; line-height: 1.55; }
+    header { display: flex; gap: 20px; align-items: center; margin-bottom: 28px; }
+    img { width: 160px; height: 160px; object-fit: cover; border-radius: 12px; border: 1px solid #ddd; }
+    h1 { margin: 0; }
+    h2 { margin-top: 26px; }
+    ul { margin-top: 8px; }
+    .muted { color: #444; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/images/me.jpg" alt="Photo of Jobin Varughese">
+    <div>
+      <h1>Jobin Varughese</h1>
+      <div class="muted">Personal webpage for CSCW class</div>
     </div>
-    <div class="col-lg-9 col-md-8">
+  </header>
 
-        {% include widgets/profile_card_bio_only.html %}
+  <h2>Section 1: About Me</h2>
+  <p><strong>Name:</strong> Jobin Varughese</p>
+  <p><strong>Why I’m in this class:</strong> I’m taking this class to better understand how people coordinate work in real settings, especially within educational contexts, when collaboration spans between tools and learning systems. I’ve also been following CSCL research and hope to publish in that venue. I’m interested in the tradeoffs tools create (speed vs. clarity, visibility vs. overload) and how design choices shape group behavior in academic contexts.</p>
 
-        <!-- Debugging widgets -->
-        {% include widgets/debug_repo_name.html %}
-        {% include widgets/debug_url.html %}
+  <h2>Section 2: Collaborative Software I Use Regularly</h2>
+  <ul>
+    <li><strong>Friends & family:</strong> SMS/iMessage, WhatsApp, FaceTime</li>
+    <li><strong>Meetings:</strong> Zoom, Microsoft Teams</li>
+    <li><strong>Work coordination:</strong> Email, Canvas</li>
+    <li><strong>Collaborative writing:</strong> Google Docs, Microsoft Word/OneDrive</li>
+    <li><strong>Project coordination:</strong> GitHub, Asana</li>
+    <li><strong>Scheduling:</strong> Google Calendar</li>
+  </ul>
 
-        {% if site.data.display.homepage.show_experience %}
-            {% include widgets/experience_card.html %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_news %}
-        {% assign count_news = site.news | size %}
-        {% if count_news > 0 %}
-        {% include widgets/news_card.html limit=site.data.display.homepage.num_news %}
-        {% endif %}
-        {% endif %}
-
-        {% if site.data.display.homepage.show_selected_publications %}
-        {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
-        {%
-        include widgets/publication_card.html
-        publications=pubs
-        title='<i class="fas fa-star"></i> Selected Publications'
-        %}
-        {% endif %}
-    </div>
-</div>
+  <h2>Section 3: What Helps Most (and What Could Be Better)</h2>
+  <p><strong>Features that help the most:</strong></p>
+  <ul>
+    <li>Shared visibility (calendars, shared docs, task lists) reduces ambiguity about who is doing what.</li>
+    <li>Version history (Docs/GitHub) makes changes trackable and reversible.</li>
+    <li>Asynchronous communication supports collaboration across different schedules.</li>
+    <li>Screen sharing helps align quickly when a problem is easier to show than explain.</li>
+  </ul>
+  <p><strong>What could be better:</strong></p>
+  <ul>
+    <li>Notification overload across tools makes it easy to miss important information.</li>
+    <li>Context gets fragmented across chat, email, and documents.</li>
+    <li>It can be hard to reconstruct the “why” beh
