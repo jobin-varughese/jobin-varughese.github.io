@@ -323,7 +323,7 @@
     /* EDUCATION ROW — logo left */
     .edu-list { display: flex; flex-direction: column; }
     .edu-item {
-      display: grid; grid-template-columns: 52px 1fr; gap: 16px;
+      display: grid; grid-template-columns: 64px 1fr; gap: 16px;
       padding: 14px 0; border-bottom: 0.5px solid var(--content-border); align-items: center;
     }
     .edu-item:last-child { border-bottom: none; }
@@ -588,18 +588,42 @@
             <span class="section-label">education</span>
             <div class="section-rule"></div>
           </div>
-          <div class="edu-list">
+         <div class="edu-list">
 
-            <!-- Texas A&M — maroon block ATM logo -->
-            <img src="TAMUlogo.png" alt="Texas A&M University" style="width:44px;height:44px;object-fit:contain;">
+  <div class="edu-item">
+    <div class="edu-logo">
+      <img src="TAMUlogo.png" alt="Texas A&M University" style="width:56px;height:56px;object-fit:contain;">
+    </div>
+    <div>
+      <div class="edu-degree">PhD, Computer Science</div>
+      <div class="edu-field">Texas A&M University</div>
+      <div class="edu-meta">2024 – present · College Station, TX</div>
+    </div>
+  </div>
 
-            <!-- Oklahoma State — block OSU logo -->
-            <img src="OSUlogo.png" alt="Oklahoma State University" style="width:44px;height:44px;object-fit:contain;">
+  <div class="edu-item">
+    <div class="edu-logo">
+      <img src="OSUlogo.png" alt="Oklahoma State University" style="width:56px;height:56px;object-fit:contain;">
+    </div>
+    <div>
+      <div class="edu-degree">M.S., Management Information Systems</div>
+      <div class="edu-field">Data Science concentration · Oklahoma State University</div>
+      <div class="edu-meta">Oklahoma State University · Stillwater, OK</div>
+    </div>
+  </div>
 
-            <!-- Christ University — circular seal style -->
-            <img src="OSUlogo.png" alt="Oklahoma State University" style="width:44px;height:44px;object-fit:contain;">
+  <div class="edu-item">
+    <div class="edu-logo">
+      <img src="Christlogo.png" alt="Christ University" style="width:56px;height:56px;object-fit:contain;">
+    </div>
+    <div>
+      <div class="edu-degree">B.S., Electronics &amp; Communication Engineering</div>
+      <div class="edu-field">Christ University · Bangalore, India</div>
+      <div class="edu-meta">Graduated 2015</div>
+    </div>
+  </div>
 
-          </div>
+</div>        
         </section>
 
         <!-- EXPERIENCE -->
