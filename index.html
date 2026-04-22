@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -266,7 +267,7 @@
     .section-rule { flex: 1; height: 0.5px; background: var(--content-border); }
 
     /* BIO */
-    .bio { font-size: 16px; line-height: 1.85; color: var(--content-text); max-width: 580px; font-weight: 300; }
+    .bio { font-family: 'Lora', serif; font-size: 16px; line-height: 1.85; color: var(--content-text); max-width: 580px; font-weight: 300; }
     .bio strong { font-weight: 500; }
 
     /* THEME CARDS */
@@ -328,10 +329,18 @@
     }
     .edu-item:last-child { border-bottom: none; }
     .edu-logo {
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
+       width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  filter: drop-shadow(0px 2px 6px rgba(0,0,0,0.15));
+  transition: filter 0.2s;
+}
+.edu-logo:hover {
+  filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.22));
+}
     .edu-degree { font-size: 13px; font-weight: 500; color: var(--content-text); }
     .edu-field { font-size: 12px; color: var(--content-secondary); margin-top: 2px; line-height: 1.4; }
     .edu-meta { font-size: 11px; color: var(--content-tertiary); margin-top: 3px; font-family: 'DM Mono', monospace; }
@@ -341,7 +350,7 @@
       background: #fff; border: 0.5px solid var(--content-border);
       border-radius: 12px; padding: 1.5rem 1.75rem;
     }
-    .opp-text { font-size: 14px; color: var(--content-text); line-height: 1.85; margin-bottom: 1.1rem; font-weight: 300; }
+    .opp-text { font-family: 'Lora', serif; font-size: 14px; color: var(--content-text); line-height: 1.85; margin-bottom: 1.1rem; font-weight: 300; }
     .opp-text strong { font-weight: 500; }
     .opp-bullets { display: flex; flex-direction: column; gap: 7px; margin-bottom: 1.25rem; }
     .opp-bullet { display: flex; align-items: start; gap: 9px; }
@@ -385,7 +394,7 @@
       <a href="#teaching">teaching</a>
       <a href="#service">service</a>
       <a href="#opportunities">opportunities</a>
-      <a href="mailto:jobin.varughese@tamu.edu" class="contact">contact ↗</a>
+      <a href="mailto:jobinv@tamu.edu" class="contact">contact ↗</a>
     </nav>
     <div class="tb-hamburger" id="hamburger" aria-label="open navigation" role="button" tabindex="0">
       <span></span><span></span><span></span>
@@ -410,7 +419,7 @@
     <a href="#teaching"      onclick="closeDrawer()">teaching</a>
     <a href="#service"       onclick="closeDrawer()">service</a>
     <a href="#opportunities" onclick="closeDrawer()">opportunities</a>
-    <a href="mailto:jobin.varughese@tamu.edu" class="contact">contact ↗</a>
+    <a href="mailto:jobinv@tamu.edu" class="contact">contact ↗</a>
   </div>
 
   <div class="layout">
@@ -424,7 +433,7 @@
         </div>
         <div class="sb-name">Jobin Varughese</div>
         <div class="sb-role">Doctoral Researcher · Computer Science<br>Texas A&amp;M University</div>
-        <div class="sb-email">jobin.varughese@tamu.edu</div>
+        <div class="sb-email">jobinv@tamu.edu</div>
       </div>
 
       <div class="sb-divider"></div>
@@ -711,7 +720,7 @@
               <div class="opp-bullet"><div class="opp-dot"></div><span class="opp-bullet-text">Interested in working with the Learning Analytics team at CTE</span></div>
               <div class="opp-bullet"><div class="opp-dot"></div><span class="opp-bullet-text">Building something in EdTech and want a collaborator</span></div>
             </div>
-            <a href="mailto:jobin.varughese@tamu.edu" class="opp-email-btn">send me an email → jobin.varughese@tamu.edu</a>
+            <a href="mailto:jobinv@tamu.edu" class="opp-email-btn">send me an email → jobinv@tamu.edu</a>
           </div>
         </section>
 
