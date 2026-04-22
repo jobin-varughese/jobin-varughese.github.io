@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobin Varughese</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #1e1e2e;
+      --surface: #252537;
+      --surface2: #2e2e44;
+      --border: #383850;
+      --fg: #e2e2f0;
+      --fg2: #9898b0;
+      --fg3: #7a7a98;
+      --cyan: #62d0d0;
+      --lime: #8fd46e;
+      --orange: #f0a070;
+      --white: #f4f4f8;
+      --content-bg: #fafaf8;
+      --content-text: #1a1a2e;
+      --content-secondary: #4a4a62;
+      --content-tertiary: #6a6a82;
+      --content-border: rgba(0,0,0,0.08);
+      --sidebar-width: 240px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--content-bg);
+      color: var(--content-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── PAGE FADE IN ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .topbar { animation: fadeIn 0.4s ease both; }
+    .sidebar { animation: fadeIn 0.5s ease 0.1s both; }
+    .section:nth-child(1) { animation: fadeUp 0.5s ease 0.15s both; }
+    .section:nth-child(2) { animation: fadeUp 0.5s ease 0.22s both; }
+    .section:nth-child(3) { animation: fadeUp 0.5s ease 0.29s both; }
+    .section:nth-child(4) { animation: fadeUp 0.5s ease 0.34s both; }
+    .section:nth-child(5) { animation: fadeUp 0.5s ease 0.39s both; }
+    .section:nth-child(6) { animation: fadeUp 0.5s ease 0.44s both; }
+    .section:nth-child(7) { animation: fadeUp 0.5s ease 0.49s both; }
+    .section:nth-child(8) { animation: fadeUp 0.5s ease 0.54s both; }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 52px;
+      background: var(--surface);
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+    .tb-name {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 800;
+      font-size: 22px;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .tb-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+    .tb-nav a {
+      font-size: 12px;
+      color: var(--fg2);
+      transition: color 0.15s;
+      letter-spacing: 0.01em;
+    }
+    .tb-nav a:hover { color: var(--white); }
+    .tb-nav a.contact { color: var(--cyan); }
+    .tb-nav a.contact:hover { color: var(--white); }
+
+    /* hamburger — hidden on desktop */
+    .tb-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .tb-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--fg2);
+      border-radius: 2px;
+      transition: background 0.15s;
+    }
+    .tb-hamburger:hover span { background: var(--white); }
+
+    /* ── MOBILE DRAWER ── */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 52px; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      padding: 2rem 1.5rem;
+      flex-direction: column;
+      gap: 0;
+      overflow-y: auto;
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a {
+      font-size: 16px;
+      color: var(--fg);
+      padding: 14px 0;
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mobile-drawer a:last-child { border-bottom: none; }
+    .mobile-drawer a.contact { color: var(--cyan); }
+    .mobile-drawer .drawer-identity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .drawer-photo {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 0.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 500; color: var(--fg2);
+      overflow: hidden; flex-shrink: 0;
+    }
+    .drawer-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .drawer-name { font-size: 14px; font-weight: 500; color: var(--white); }
+    .drawer-role { font-size: 11px; color: var(--fg2); margin-top: 2px; }
+
+    /* ── BODY LAYOUT ── */
+    .layout {
+      display: flex;
+      flex: 1;
+      min-height: calc(100vh - 52px);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: var(--sidebar-width);
+      flex-shrink: 0;
+      background: var(--bg);
+      border-right: 0.5px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 52px;
+      height: calc(100vh - 52px);
+      overflow: hidden;
+      padding: 1.75rem 1.25rem 1.25rem;
+    }
+
+    .sb-identity { text-align: center; margin-bottom: 1.25rem; flex-shrink: 0; }
+    .sb-photo {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      background: var(--surface2);
+      border: 2px solid var(--border);
+      margin: 0 auto 0.85rem;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px; font-weight: 500; color: var(--fg2);
+    }
+    .sb-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .sb-name { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
+    .sb-role { font-size: 10px; color: var(--fg2); line-height: 1.6; margin-bottom: 5px; }
+    .sb-email { font-size: 10px; color: var(--cyan); font-family: 'DM Mono', monospace; }
+
+    .sb-divider { height: 0.5px; background: var(--border); margin: 1rem 0; flex-shrink: 0; }
+
+    .sb-section-label {
+      font-size: 9px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--cyan); margin-bottom: 0.65rem; flex-shrink: 0;
+    }
+
+    .sb-news-wrap {
+      flex: 1; overflow-y: auto; min-height: 0; padding-right: 2px;
+    }
+    .sb-news-wrap::-webkit-scrollbar { width: 3px; }
+    .sb-news-wrap::-webkit-scrollbar-track { background: transparent; }
+    .sb-news-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .sb-news { display: flex; flex-direction: column; gap: 10px; }
+    .sb-news-date { font-size: 9px; color: var(--fg3); font-family: 'DM Mono', monospace; margin-bottom: 2px; }
+    .sb-news-text { font-size: 11px; color: var(--fg); line-height: 1.5; margin-bottom: 4px; }
+    .sb-tag {
+      display: inline-block; font-size: 9px; padding: 1px 6px;
+      border-radius: 3px; font-weight: 500; font-family: 'DM Mono', monospace;
+    }
+    .tag-paper { background: #1a2e2e; color: var(--cyan); border: 0.5px solid var(--cyan); }
+    .tag-talk  { background: #1e2e1a; color: var(--lime); border: 0.5px solid var(--lime); }
+    .tag-role  { background: #2e2218; color: var(--orange); border: 0.5px solid var(--orange); }
+
+    .sb-bottom { flex-shrink: 0; padding-top: 1rem; border-top: 0.5px solid var(--border); margin-top: 0.75rem; }
+    .sb-links-label { font-size: 9px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg3); margin-bottom: 7px; }
+    .sb-links { display: flex; flex-direction: column; gap: 5px; }
+    .sb-link-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 8px; border: 0.5px solid var(--border);
+      border-radius: 6px; background: var(--surface); cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .sb-link-btn:hover { border-color: var(--cyan); background: var(--surface2); }
+    .sb-link-icon {
+      width: 16px; height: 16px; border-radius: 3px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .sb-link-label { font-size: 11px; color: var(--fg2); }
+
+    /* ── RIGHT PANEL ── */
+    .right-panel { flex: 1; display: flex; }
+    .main-content { width: 75%; min-width: 0; display: flex; flex-direction: column; border-right: 0.5px solid var(--content-border); }
+    .right-margin { width: 25%; background: var(--content-bg); }
+
+    /* ── SECTIONS ── */
+    .section { padding: 2rem 2.5rem; border-bottom: 0.5px solid var(--content-border); }
+    .section:last-child { border-bottom: none; }
+
+    .section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
+    .section-label {
+      font-size: 10px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--content-tertiary);
+      white-space: nowrap; font-family: 'DM Mono', monospace;
+    }
+    .section-rule { flex: 1; height: 0.5px; background: var(--content-border); }
+
+    /* BIO */
+    .bio { font-size: 16px; line-height: 1.85; color: var(--content-text); max-width: 580px; font-weight: 300; }
+    .bio strong { font-weight: 500; }
+
+    /* THEME CARDS */
+    .themes { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .theme-card {
+      border: 0.5px solid var(--content-border); border-radius: 12px;
+      padding: 1.1rem 1rem; background: #fff; transition: background 0.15s;
+    }
+    .theme-card:hover { background: #f5f5f3; }
+    .theme-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+    .ti-cyan   { background: #e0f7f7; }
+    .ti-lime   { background: #eaf5e0; }
+    .ti-orange { background: #faf0e6; }
+    .theme-name { font-size: 13px; font-weight: 500; color: var(--content-text); margin-bottom: 4px; }
+    .theme-desc { font-size: 11px; color: var(--content-secondary); line-height: 1.6; }
+
+    /* PUBLICATIONS */
+    .pub-list { display: flex; flex-direction: column; gap: 10px; }
+    .pub-row {
+      display: grid; grid-template-columns: 72px 1fr; gap: 14px;
+      padding: 14px; border: 0.5px solid var(--content-border);
+      border-radius: 12px; background: #fff; transition: background 0.15s;
+    }
+    .pub-row:hover { background: #f5f5f3; }
+    .pub-thumb { width: 72px; height: 56px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .pt-cyan   { background: #e0f7f7; }
+    .pt-lime   { background: #eaf5e0; }
+    .pt-orange { background: #faf0e6; }
+    .pub-title { font-size: 13px; font-weight: 500; color: var(--content-text); line-height: 1.5; margin-bottom: 3px; }
+    .pub-authors { font-size: 11px; color: var(--content-secondary); margin-bottom: 7px; }
+    .pub-footer { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .pub-venue { font-size: 10px; padding: 2px 9px; border-radius: 20px; font-weight: 500; font-family: 'DM Mono', monospace; }
+    .pv-cyan   { background: #e0f7f7; color: #0a5a5a; }
+    .pv-lime   { background: #eaf5e0; color: #2a5a10; }
+    .pv-orange { background: #faf0e6; color: #7a3a10; }
+    .pub-link {
+      font-size: 11px; color: var(--content-tertiary);
+      border: 0.5px solid var(--content-border); border-radius: 6px; padding: 2px 9px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .pub-link:hover { color: var(--content-text); border-color: rgba(0,0,0,0.2); }
+
+    /* ROW LIST — experience, teaching, service */
+    .row-list { display: flex; flex-direction: column; }
+    .row-item {
+      display: grid; grid-template-columns: 130px 1fr; gap: 12px;
+      padding: 11px 0; border-bottom: 0.5px solid var(--content-border); align-items: start;
+    }
+    .row-item:last-child { border-bottom: none; }
+    .row-term { font-size: 11px; color: var(--content-tertiary); padding-top: 2px; line-height: 1.5; font-family: 'DM Mono', monospace; }
+    .row-role { font-size: 13px; font-weight: 500; color: var(--content-text); }
+    .row-detail { font-size: 12px; color: var(--content-secondary); margin-top: 2px; line-height: 1.5; }
+
+    /* EDUCATION ROW — logo left */
+    .edu-list { display: flex; flex-direction: column; }
+    .edu-item {
+      display: grid; grid-template-columns: 52px 1fr; gap: 16px;
+      padding: 14px 0; border-bottom: 0.5px solid var(--content-border); align-items: center;
+    }
+    .edu-item:last-child { border-bottom: none; }
+    .edu-logo {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .edu-degree { font-size: 13px; font-weight: 500; color: var(--content-text); }
+    .edu-field { font-size: 12px; color: var(--content-secondary); margin-top: 2px; line-height: 1.4; }
+    .edu-meta { font-size: 11px; color: var(--content-tertiary); margin-top: 3px; font-family: 'DM Mono', monospace; }
+
+    /* OPPORTUNITIES */
+    .opp-box {
+      background: #fff; border: 0.5px solid var(--content-border);
+      border-radius: 12px; padding: 1.5rem 1.75rem;
+    }
+    .opp-text { font-size: 14px; color: var(--content-text); line-height: 1.85; margin-bottom: 1.1rem; font-weight: 300; }
+    .opp-text strong { font-weight: 500; }
+    .opp-bullets { display: flex; flex-direction: column; gap: 7px; margin-bottom: 1.25rem; }
+    .opp-bullet { display: flex; align-items: start; gap: 9px; }
+    .opp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); flex-shrink: 0; margin-top: 6px; }
+    .opp-bullet-text { font-size: 13px; color: var(--content-secondary); line-height: 1.6; }
+    .opp-email-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: #0a7a7a;
+      background: #e0f7f7; border: 0.5px solid rgba(98,208,208,0.3);
+      padding: 8px 16px; border-radius: 8px; transition: background 0.15s;
+    }
+    .opp-email-btn:hover { background: #c8f0f0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main-content { width: 100%; }
+      .right-margin { display: none; }
+      .tb-nav { display: none; }
+      .tb-hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .section { padding: 1.5rem 1.25rem; }
+      .themes { grid-template-columns: 1fr; }
+      .pub-row { grid-template-columns: 1fr; }
+      .pub-thumb { display: none; }
+      .row-item { grid-template-columns: 1fr; }
+      .edu-item { grid-template-columns: 44px 1fr; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <span class="tb-name">Jobin Varughese</span>
+    <nav class="tb-nav">
+      <a href="#research">research</a>
+      <a href="#education">education</a>
+      <a href="#experience">experience</a>
+      <a href="#teaching">teaching</a>
+      <a href="#service">service</a>
+      <a href="#opportunities">opportunities</a>
+      <a href="mailto:jobin.varughese@tamu.edu" class="contact">contact ↗</a>
+    </nav>
+    <div class="tb-hamburger" id="hamburger" aria-label="open navigation" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="drawer">
+    <div class="drawer-identity">
+      <div class="drawer-photo">
+        <!-- <img src="img/photo.jpg" alt="Jobin Varughese"> -->
+        JV
+      </div>
+      <div>
+        <div class="drawer-name">Jobin Varughese</div>
+        <div class="drawer-role">Doctoral Researcher · Texas A&amp;M</div>
+      </div>
+    </div>
+    <a href="#research"      onclick="closeDrawer()">research</a>
+    <a href="#education"     onclick="closeDrawer()">education</a>
+    <a href="#experience"    onclick="closeDrawer()">experience</a>
+    <a href="#teaching"      onclick="closeDrawer()">teaching</a>
+    <a href="#service"       onclick="closeDrawer()">service</a>
+    <a href="#opportunities" onclick="closeDrawer()">opportunities</a>
+    <a href="mailto:jobin.varughese@tamu.edu" class="contact">contact ↗</a>
+  </div>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sb-identity">
+        <div class="sb-photo">
+          <!-- Replace with: <img src="img/photo.jpg" alt="Jobin Varughese"> -->
+          JV
+        </div>
+        <div class="sb-name">Jobin Varughese</div>
+        <div class="sb-role">Doctoral Researcher · Computer Science<br>Texas A&amp;M University</div>
+        <div class="sb-email">jobin.varughese@tamu.edu</div>
+      </div>
+
+      <div class="sb-divider"></div>
+      <div class="sb-section-label">recent news</div>
+      <div class="sb-news-wrap">
+        <div class="sb-news">
+          <div>
+            <div class="sb-news-date">Apr 2025</div>
+            <div class="sb-news-text">Demo paper submitted to AIEd and Learning@Scale</div>
+            <span class="sb-tag tag-paper">paper</span>
+          </div>
+          <div>
+            <div class="sb-news-date">Mar 2025</div>
+            <div class="sb-news-text">Talk at CTE, Texas A&amp;M</div>
+            <span class="sb-tag tag-talk">talk</span>
+          </div>
+          <div>
+            <div class="sb-news-date">Jan 2025</div>
+            <div class="sb-news-text">Joined CTE as Graduate Student Technician</div>
+            <span class="sb-tag tag-role">role</span>
+          </div>
+          <div>
+            <div class="sb-news-date">2024</div>
+            <div class="sb-news-text">Started PhD at Texas A&amp;M University</div>
+            <span class="sb-tag tag-role">milestone</span>
+          </div>
+          <div>
+            <div class="sb-news-date">2023</div>
+            <div class="sb-news-text">Paper accepted at ASEE Annual Conference</div>
+            <span class="sb-tag tag-paper">paper</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sb-bottom">
+        <div class="sb-links-label">links</div>
+        <div class="sb-links">
+          <a href="https://scholar.google.com" target="_blank" class="sb-link-btn" aria-label="Google Scholar profile">
+            <div class="sb-link-icon" style="background:#4a8fff22">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1L1 4.5l5 3 5-3L6 1z" fill="#4a8fff"/><path d="M3 6v3c0 1.1 1.3 2 3 2s3-.9 3-2V6" stroke="#4a8fff" stroke-width="1" fill="none"/></svg>
+            </div>
+            <span class="sb-link-label">Google Scholar</span>
+          </a>
+          <a href="https://linkedin.com/in/jobin-varughese" target="_blank" class="sb-link-btn" aria-label="LinkedIn profile">
+            <div class="sb-link-icon" style="background:#0a66c222">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="1" y="4" width="2" height="7" fill="#0a66c2"/><circle cx="2" cy="2" r="1" fill="#0a66c2"/><path d="M5 4v7M5 6.5c0-1.5 4-2 4 1v2.5" stroke="#0a66c2" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
+            </div>
+            <span class="sb-link-label">LinkedIn</span>
+          </a>
+          <a href="https://github.com/jobin-varughese" target="_blank" class="sb-link-btn" aria-label="GitHub profile">
+            <div class="sb-link-icon" style="background:#ffffff18">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1a5 5 0 00-1.58 9.74c.25.05.34-.11.34-.24v-.85C3.08 9.9 2.76 8.8 2.76 8.8c-.23-.58-.56-.73-.56-.73-.46-.31.03-.31.03-.31.51.04.78.52.78.52.45.77 1.18.55 1.47.42.05-.33.18-.55.32-.68-1.12-.13-2.3-.56-2.3-2.49 0-.55.2-1 .52-1.35-.05-.13-.22-.64.05-1.33 0 0 .42-.14 1.38.52a4.8 4.8 0 012.5 0c.96-.66 1.38-.52 1.38-.52.27.69.1 1.2.05 1.33.32.35.52.8.52 1.35 0 1.94-1.18 2.36-2.3 2.49.18.16.34.47.34.95v1.4c0 .13.09.29.34.24A5 5 0 006 1z" fill="#e2e2f0"/></svg>
+            </div>
+            <span class="sb-link-label">GitHub</span>
+          </a>
+          <a href="cv.pdf" target="_blank" class="sb-link-btn" aria-label="Download CV as PDF">
+            <div class="sb-link-icon" style="background:#f0a07022">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><rect x="2" y="1" width="8" height="10" rx="1" stroke="#f0a070" stroke-width="1" fill="none"/><line x1="4" y1="4" x2="8" y2="4" stroke="#f0a070" stroke-width="1" stroke-linecap="round"/><line x1="4" y1="6" x2="8" y2="6" stroke="#f0a070" stroke-width="1" stroke-linecap="round"/><line x1="4" y1="8" x2="6" y2="8" stroke="#f0a070" stroke-width="1" stroke-linecap="round"/></svg>
+            </div>
+            <span class="sb-link-label">Download CV</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT PANEL -->
+    <div class="right-panel">
+      <main class="main-content">
+
+        <!-- BIO -->
+        <section class="section" id="about">
+          <p class="bio">I design and study <strong>AI systems for education</strong> — building tools that are adaptive, equitable, and grounded in how people actually learn.</p>
+        </section>
+
+        <!-- RESEARCH AREAS -->
+        <section class="section" id="research">
+          <div class="section-head">
+            <span class="section-label">research areas</span>
+            <div class="section-rule"></div>
+          </div>
+          <div class="themes">
+            <div class="theme-card">
+              <div class="theme-icon ti-cyan">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="4" fill="#62d0d0" opacity=".8"/><circle cx="10" cy="3.5" r="2" fill="#62d0d0" opacity=".4"/><circle cx="15.5" cy="13.5" r="2" fill="#62d0d0" opacity=".4"/><circle cx="4.5" cy="13.5" r="2" fill="#62d0d0" opacity=".4"/><line x1="10" y1="5.5" x2="10" y2="8" stroke="#62d0d0" stroke-width="1"/><line x1="14" y1="12" x2="12" y2="11" stroke="#62d0d0" stroke-width="1"/><line x1="6" y1="12" x2="8" y2="11" stroke="#62d0d0" stroke-width="1"/></svg>
+              </div>
+              <div class="theme-name">AI in education</div>
+              <div class="theme-desc">Adaptive systems, intelligent tutoring, personalized learning pipelines</div>
+            </div>
+            <div class="theme-card">
+              <div class="theme-icon ti-lime">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="13" width="3" height="5" rx="1" fill="#8fd46e" opacity=".5"/><rect x="7" y="9" width="3" height="9" rx="1" fill="#8fd46e" opacity=".7"/><rect x="12" y="5" width="3" height="13" rx="1" fill="#8fd46e"/><polyline points="3.5,13 8.5,9 13.5,5 17,3" stroke="#8fd46e" stroke-width="1.2" fill="none"/><circle cx="17" cy="3" r="1.5" fill="#8fd46e"/></svg>
+              </div>
+              <div class="theme-name">learning analytics</div>
+              <div class="theme-desc">Behavioral data, student modeling, evidence-based interventions</div>
+            </div>
+            <div class="theme-card">
+              <div class="theme-icon ti-orange">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="10" rx="2" fill="none" stroke="#f0a070" stroke-width="1.5"/><rect x="7" y="14" width="6" height="2" rx=".5" fill="#f0a070"/><circle cx="7" cy="9" r="2" fill="#f0a070" opacity=".7"/><line x1="10.5" y1="7" x2="15" y2="7" stroke="#f0a070" stroke-width="1" stroke-linecap="round"/><line x1="10.5" y1="9" x2="15" y2="9" stroke="#f0a070" stroke-width="1" stroke-linecap="round"/><line x1="10.5" y1="11" x2="13" y2="11" stroke="#f0a070" stroke-width="1" stroke-linecap="round" opacity=".6"/></svg>
+              </div>
+              <div class="theme-name">human-AI interaction</div>
+              <div class="theme-desc">Interface design, cognitive load, accessible AI tools</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PUBLICATIONS -->
+        <section class="section" id="publications">
+          <div class="section-head">
+            <span class="section-label">publications</span>
+            <div class="section-rule"></div>
+          </div>
+          <div class="pub-list">
+            <div class="pub-row">
+              <div class="pub-thumb pt-cyan">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="6" fill="#62d0d0" opacity=".7"/><circle cx="16" cy="6" r="3" fill="#62d0d0" opacity=".4"/><circle cx="24" cy="21" r="3" fill="#62d0d0" opacity=".4"/><circle cx="8" cy="21" r="3" fill="#62d0d0" opacity=".4"/></svg>
+              </div>
+              <div>
+                <div class="pub-title">Your paper title — add your actual title here</div>
+                <div class="pub-authors">Jobin Varughese, Co-author Name · 2025</div>
+                <div class="pub-footer">
+                  <span class="pub-venue pv-cyan">AIEd 2025</span>
+                  <a href="#" class="pub-link">paper</a>
+                  <a href="#" class="pub-link">code</a>
+                  <a href="#" class="pub-link">abstract</a>
+                </div>
+              </div>
+            </div>
+            <div class="pub-row">
+              <div class="pub-thumb pt-lime">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="3" y="21" width="5" height="8" rx="1.5" fill="#8fd46e" opacity=".5"/><rect x="11" y="15" width="5" height="14" rx="1.5" fill="#8fd46e" opacity=".7"/><rect x="19" y="9" width="5" height="20" rx="1.5" fill="#8fd46e"/><polyline points="5.5,21 13.5,15 21.5,9 27,6" stroke="#8fd46e" stroke-width="1.5" fill="none"/></svg>
+              </div>
+              <div>
+                <div class="pub-title">Your paper title — add your actual title here</div>
+                <div class="pub-authors">Jobin Varughese, Co-author Name · 2025</div>
+                <div class="pub-footer">
+                  <span class="pub-venue pv-lime">L@S 2025</span>
+                  <a href="#" class="pub-link">paper</a>
+                  <a href="#" class="pub-link">poster</a>
+                </div>
+              </div>
+            </div>
+            <div class="pub-row">
+              <div class="pub-thumb pt-orange">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="3" y="6" width="26" height="16" rx="3" fill="none" stroke="#f0a070" stroke-width="1.5"/><rect x="11" y="22" width="10" height="3" rx="1" fill="#f0a070"/><circle cx="11" cy="14" r="3.5" fill="#f0a070" opacity=".7"/><line x1="17" y1="11" x2="25" y2="11" stroke="#f0a070" stroke-width="1.2" stroke-linecap="round"/><line x1="17" y1="14" x2="25" y2="14" stroke="#f0a070" stroke-width="1.2" stroke-linecap="round"/><line x1="17" y1="17" x2="22" y2="17" stroke="#f0a070" stroke-width="1.2" stroke-linecap="round" opacity=".6"/></svg>
+              </div>
+              <div>
+                <div class="pub-title">Your paper title — add your actual title here</div>
+                <div class="pub-authors">Jobin Varughese, Co-author Name · 2025</div>
+                <div class="pub-footer">
+                  <span class="pub-venue pv-orange">ASEE 2025</span>
+                  <a href="#" class="pub-link">paper</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section class="section" id="education">
+          <div class="section-head">
+            <span class="section-label">education</span>
+            <div class="section-rule"></div>
+          </div>
+          <div class="edu-list">
+
+            <!-- Texas A&M — maroon block ATM logo -->
+            <div class="edu-item">
+              <div class="edu-logo">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-label="Texas A&M University logo">
+                  <rect width="44" height="44" rx="6" fill="#500000"/>
+                  <text x="22" y="30" font-family="'Open Sans', sans-serif" font-weight="800" font-size="14" fill="white" text-anchor="middle" letter-spacing="1">ATM</text>
+                </svg>
+              </div>
+              <div>
+                <div class="edu-degree">PhD, Computer Science</div>
+                <div class="edu-field">Texas A&amp;M University</div>
+                <div class="edu-meta">2024 – present · College Station, TX</div>
+              </div>
+            </div>
+
+            <!-- Oklahoma State — block OSU logo -->
+            <div class="edu-item">
+              <div class="edu-logo">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-label="Oklahoma State University logo">
+                  <rect width="44" height="44" rx="6" fill="#FF6600"/>
+                  <text x="22" y="30" font-family="'Open Sans', sans-serif" font-weight="800" font-size="14" fill="white" text-anchor="middle" letter-spacing="1">OSU</text>
+                </svg>
+              </div>
+              <div>
+                <div class="edu-degree">M.S., Management Information Systems</div>
+                <div class="edu-field">Data Science concentration · Oklahoma State University</div>
+                <div class="edu-meta">Oklahoma State University · Stillwater, OK</div>
+              </div>
+            </div>
+
+            <!-- Christ University — circular seal style -->
+            <div class="edu-item">
+              <div class="edu-logo">
+                <svg width="44" height="44" viewBox="0 0 44 44" fill="none" aria-label="Christ University logo">
+                  <circle cx="22" cy="22" r="21" fill="#002147" stroke="#c8a84b" stroke-width="1.5"/>
+                  <circle cx="22" cy="22" r="16" fill="none" stroke="#c8a84b" stroke-width="0.75"/>
+                  <text x="22" y="19" font-family="'DM Sans', sans-serif" font-weight="500" font-size="6.5" fill="#c8a84b" text-anchor="middle" letter-spacing="0.5">CHRIST</text>
+                  <text x="22" y="27" font-family="'DM Sans', sans-serif" font-weight="400" font-size="5" fill="#c8a84b" text-anchor="middle" letter-spacing="0.3">UNIVERSITY</text>
+                  <line x1="13" y1="22" x2="31" y2="22" stroke="#c8a84b" stroke-width="0.5" opacity=".5"/>
+                </svg>
+              </div>
+              <div>
+                <div class="edu-degree">B.S., Electronics &amp; Communication Engineering</div>
+                <div class="edu-field">Christ University · Bangalore, India</div>
+                <div class="edu-meta">Graduated 2015</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section" id="experience">
+          <div class="section-head">
+            <span class="section-label">experience</span>
+            <div class="section-rule"></div>
+          </div>
+          <div class="row-list">
+            <div class="row-item">
+              <span class="row-term">2022 – present</span>
+              <div>
+                <div class="row-role">Senior Educational Data Analyst</div>
+                <div class="row-detail">Center for Teaching Excellence (CTE) · Texas A&amp;M University</div>
+              </div>
+            </div>
+            <div class="row-item">
+              <span class="row-term">Add dates</span>
+              <div>
+                <div class="row-role">Previous Role Title</div>
+                <div class="row-detail">Organization · Location</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TEACHING -->
+        <section class="section" id="teaching">
+          <div class="section-head">
+            <span class="section-label">teaching</span>
+            <div class="section-rule"></div>
+          </div>
+          <div class="row-list">
+            <div class="row-item">
+              <span class="row-term">2024 – present</span>
+              <div>
+                <div class="row-role">Graduate Student Technician</div>
+                <div class="row-detail">Center for Teaching Excellence (CTE) · Texas A&amp;M University</div>
+              </div>
+            </div>
+            <div class="row-item">
+              <span class="row-term">ongoing</span>
+              <div>
+                <div class="row-role">Teaching Assistant</div>
+                <div class="row-detail">Dept. of Computer Science &amp; Engineering · Texas A&amp;M University</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SERVICE -->
+        <section class="section" id="service">
+          <div class="section-head">
+            <span class="section-label">service</span>
+            <div class="section-rule"></div>
+          </div>
+          <div class="row-list">
+            <div class="row-item">
+              <span class="row-term">AIEd · L@S · LAK</span>
+              <div>
+                <div class="row-role">Reviewer</div>
+                <div class="row-detail">Program committee reviewer for AI in Education, Learning@Scale, and Learning Analytics &amp; Knowledge</div>
+              </div>
+            </div>
+            <div class="row-item">
+              <span class="row-term">CTE · TAMU</span>
+              <div>
+                <div class="row-role">Learning Analytics Team</div>
+                <div class="row-detail">Contributing to learning analytics research and student support initiatives at the Center for Teaching Excellence</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- OPPORTUNITIES -->
+        <section class="section" id="opportunities">
+          <div class="section-head">
+            <span class="section-label">opportunities</span>
+            <div class="section-rule"></div>
+          </div>
+          <div class="opp-box">
+            <p class="opp-text">If you're a <strong>TAMU student</strong> looking to get involved in research, have an interesting idea, or are building an EdTech tool — I'd love to hear from you. I have a few spots each semester to mentor and collaborate with students who have a passion for learning, a growth mindset, and who want to contribute to impactful projects.</p>
+            <div class="opp-bullets">
+              <div class="opp-bullet"><div class="opp-dot"></div><span class="opp-bullet-text">Prior research experience or brand new — both welcome</span></div>
+              <div class="opp-bullet"><div class="opp-dot"></div><span class="opp-bullet-text">Interested in working with the Learning Analytics team at CTE</span></div>
+              <div class="opp-bullet"><div class="opp-dot"></div><span class="opp-bullet-text">Building something in EdTech and want a collaborator</span></div>
+            </div>
+            <a href="mailto:jobin.varughese@tamu.edu" class="opp-email-btn">send me an email → jobin.varughese@tamu.edu</a>
+          </div>
+        </section>
+
+      </main>
+      <div class="right-margin"></div>
+    </div>
+
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+    let open = false;
+
+    hamburger.addEventListener('click', () => {
+      open = !open;
+      drawer.classList.toggle('open', open);
+    });
+
+    hamburger.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        hamburger.click();
+      }
+    });
+
+    function closeDrawer() {
+      open = false;
+      drawer.classList.remove('open');
+    }
+
+    document.addEventListener('click', e => {
+      if (open && !drawer.contains(e.target) && !hamburger.contains(e.target)) {
+        closeDrawer();
+      }
+    });
+  </script>
+
+</body>
+</html>
