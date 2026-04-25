@@ -94,12 +94,13 @@
     }
     .tb-name-bold  { font-weight: 800; }
     .tb-name-light { font-weight: 300; }
-    /* nav fills ALL remaining space evenly */
+    /* nav right aligned */
     .tb-nav {
       flex: 1;
       display: flex;
       align-items: center;
-      justify-content: space-evenly;
+      justify-content: flex-end;
+      gap: 1.5rem;
       padding-right: 0;
     }
     .tb-nav a { font-size: 17px; color: #c8c8d8; transition: color 0.15s; white-space: nowrap; }
@@ -193,10 +194,10 @@
       padding: 0 1.25rem 1.5rem 1.25rem;
     }
 
-    .sb-identity { text-align: center; margin-bottom: 0.5rem; flex-shrink: 0; }
+    .sb-identity { text-align: center; margin: 0; flex-shrink: 0; background: rgba(255,255,255,0.75); padding: 0.65rem 1.25rem 0.65rem; margin-right: -1.25rem; border-left: 3px solid #500000; }
     .sb-photo {
       width: calc(100% + 1.25rem);
-      margin: 0 -1.25rem 1.25rem 0;
+      margin: 0 -1.25rem 0 0;
       height: 240px;
       border-radius: 0;
       background: #d8d6ce;
@@ -205,11 +206,11 @@
       flex-shrink: 0;
     }
     .sb-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .sb-role { font-size: 14px; color: var(--fg2); line-height: 1.5; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .sb-role-tamu { font-size: 15px; font-weight: 700; color: #500000; margin-bottom: 0; font-variant: small-caps; letter-spacing: 0.05em; }
+    .sb-role { font-size: 13px; color: var(--fg2); line-height: 1.5; margin-bottom: 2px; }
+    .sb-role-tamu { font-size: 14px; font-weight: 700; color: #500000; margin-bottom: 0; }
     .sb-email { font-size: 14px; color: #0a7a7a; font-family: 'DM Mono', monospace; }
 
-    .sb-divider { height: 0.5px; background: rgba(0,0,0,0.1); margin: 0.6rem 0; flex-shrink: 0; }
+    .sb-divider { height: 0.5px; background: rgba(0,0,0,0.1); margin: 0 0 0.75rem 0; flex-shrink: 0; }
 
     .sb-section-label {
       font-size: 11px; font-weight: 500;
@@ -227,7 +228,7 @@
       50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 0 5px rgba(217,79,43,0); }
     }
 
-    .sb-news-wrap { flex: 1; overflow-y: auto; min-height: 0; padding-right: 3px; }
+    .sb-news-wrap { flex: 1; overflow-y: auto; min-height: 0; padding-right: 8px; margin-right: -4px; }
     .sb-news-wrap::-webkit-scrollbar { width: 3px; }
     .sb-news-wrap::-webkit-scrollbar-track { background: transparent; }
     .sb-news-wrap::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 2px; }
@@ -270,10 +271,11 @@
       background: var(--content-bg);
       box-shadow: -1px 0 0 rgba(0,0,0,0.06), 1px 0 0 rgba(0,0,0,0.04);
     }
-    .right-margin { flex: 0 0 22%; background: var(--warm); }
+    .right-margin { flex: 0 0 16%; background: var(--warm); }
 
     /* ── SECTIONS ── */
     .section { padding: 2.25rem 2.75rem; border-bottom: 0.5px solid var(--content-border); }
+    .section#about { padding-top: 1.25rem; padding-bottom: 1.25rem; }
     .section:last-child { border-bottom: none; padding-bottom: 3rem; }
 
     .section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
@@ -290,13 +292,20 @@
     .themes { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
     .theme-card {
       border: 0.5px solid var(--content-border); border-radius: 12px;
-      padding: 1.25rem 1.1rem; background: #fafaf8; transition: background 0.15s;
+      overflow: hidden; background: #fafaf8;
+      transition: box-shadow 0.2s;
     }
-    .theme-card:hover { background: #f4f3ef; }
-    .theme-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
-    .ti-cyan { background: #e0f7f7; } .ti-lime { background: #eaf5e0; } .ti-orange { background: #faf0e6; }
-    .theme-name { font-size: 15px; font-weight: 500; color: var(--content-text); margin-bottom: 5px; }
-    .theme-desc { font-size: 13px; color: var(--content-secondary); line-height: 1.6; }
+    .theme-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .theme-header {
+      padding: 0.55rem 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tc-cyan  .theme-header { background: #6a2a2a; }
+    .tc-lime  .theme-header { background: #2a7a7a; }
+    .tc-orange .theme-header { background: #3a5a8a; }
+    .theme-name { font-size: 12px; font-weight: 700; color: #ffffff; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Open Sans', sans-serif; }
+    .theme-body { padding: 1rem 1.1rem; }
+    .theme-desc { font-size: 13px; color: var(--content-secondary); line-height: 1.65; }
 
     .pub-list { display: flex; flex-direction: column; }
     .pub-row {
@@ -477,6 +486,9 @@
     .pub-collab { font-size: 11px; color: var(--content-tertiary); font-style: italic; }
     .pub-div { font-size: 11px; color: var(--content-tertiary); }
 
+    .exp-institution.tamu .row-item { background: rgba(80,0,0,0.035); }
+    .exp-institution.osu  .row-item { background: rgba(255,102,0,0.04); }
+
     @media (max-width: 960px) {
       .sidebar { display: none; }
       .tb-nav { display: none; }
@@ -498,7 +510,7 @@
 <body>
 
   <header class="topbar">
-    <span class="tb-name"><span class="tb-name-bold">Jobin</span> <span class="tb-name-light">Varughese</span></span>
+    <a href="/" class="tb-name" style="text-decoration:none;"><span class="tb-name-bold">Jobin</span> <span class="tb-name-light">Varughese</span></a>
     <nav class="tb-nav">
       <a href="#research">research</a>
       <a href="#education">education</a>
@@ -561,10 +573,10 @@
   <div class="layout">
 
     <aside class="sidebar">
+      <div class="sb-photo">
+        <img src="headshotLI.jpg" alt="Jobin Varughese">
+      </div>
       <div class="sb-identity">
-        <div class="sb-photo">
-          <img src="headshotLI.jpg" alt="Jobin Varughese">
-        </div>
         <div class="sb-role">PhD Student, Computer Science</div>
         <div class="sb-role">Sr. Educational Data Analyst</div>
         <div class="sb-role-tamu">Texas A&amp;M University</div>
@@ -649,26 +661,35 @@
       <div class="scroll-indicator" id="scrollIndicator">about</div>
 
       <section class="section" id="about">
-        <p class="bio">I build systems that <strong>learn how people learn</strong> — using behavioral data, AI, and human-centered design to make education more responsive, equitable, and evidence-driven.</p>
+        <p class="bio">I observe, build, and study systems that <strong>learn how people learn</strong> — using behavioral data, AI, and human-centered design to make education more responsive, equitable, and evidence-driven for today's learner.</p>
       </section>
 
       <section class="section" id="research">
         <div class="section-head"><span class="section-label">research areas</span><div class="section-rule"></div></div>
         <div class="themes">
-          <div class="theme-card">
-            <div class="theme-icon ti-cyan"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="4" fill="#5bbfbf" opacity=".8"/><circle cx="10" cy="3.5" r="2" fill="#5bbfbf" opacity=".4"/><circle cx="15.5" cy="13.5" r="2" fill="#5bbfbf" opacity=".4"/><circle cx="4.5" cy="13.5" r="2" fill="#5bbfbf" opacity=".4"/><line x1="10" y1="5.5" x2="10" y2="8" stroke="#5bbfbf" stroke-width="1"/><line x1="14" y1="12" x2="12" y2="11" stroke="#5bbfbf" stroke-width="1"/><line x1="6" y1="12" x2="8" y2="11" stroke="#5bbfbf" stroke-width="1"/></svg></div>
-            <div class="theme-name">AI in education</div>
-            <div class="theme-desc">Designing intelligent systems that adapt to learners — not the other way around. Tutoring agents, feedback loops, and models that make pedagogy computable.</div>
+          <div class="theme-card tc-cyan">
+            <div class="theme-header">
+              <div class="theme-name">AI in Education</div>
+            </div>
+            <div class="theme-body">
+              <div class="theme-desc">Studying how AI shapes the learning process, from adaptive systems and <strong>intelligent feedback</strong> to <strong>LLM-as-Judge</strong> evaluation frameworks, and the challenge of keeping the human meaningfully in the loop.</div>
+            </div>
           </div>
-          <div class="theme-card">
-            <div class="theme-icon ti-lime"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="13" width="3" height="5" rx="1" fill="#82c45e" opacity=".5"/><rect x="7" y="9" width="3" height="9" rx="1" fill="#82c45e" opacity=".7"/><rect x="12" y="5" width="3" height="13" rx="1" fill="#82c45e"/><polyline points="3.5,13 8.5,9 13.5,5 17,3" stroke="#82c45e" stroke-width="1.2" fill="none"/><circle cx="17" cy="3" r="1.5" fill="#82c45e"/></svg></div>
-            <div class="theme-name">learning analytics</div>
-            <div class="theme-desc">Translating the digital traces students leave behind into actionable insight — temporal patterns, engagement signals, and early warning systems that actually work.</div>
+          <div class="theme-card tc-lime">
+            <div class="theme-header">
+              <div class="theme-name">Learning Analytics</div>
+            </div>
+            <div class="theme-body">
+              <div class="theme-desc">The classroom generates more data than anyone knows what to do with. I work on the 'what to do with it' part — <strong>connecting behavioral signals and instructional design</strong> to surface patterns that help educators make better decisions.</div>
+            </div>
           </div>
-          <div class="theme-card">
-            <div class="theme-icon ti-orange"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="10" rx="2" fill="none" stroke="#e89660" stroke-width="1.5"/><rect x="7" y="14" width="6" height="2" rx=".5" fill="#e89660"/><circle cx="7" cy="9" r="2" fill="#e89660" opacity=".7"/><line x1="10.5" y1="7" x2="15" y2="7" stroke="#e89660" stroke-width="1" stroke-linecap="round"/><line x1="10.5" y1="9" x2="15" y2="9" stroke="#e89660" stroke-width="1" stroke-linecap="round"/><line x1="10.5" y1="11" x2="13" y2="11" stroke="#e89660" stroke-width="1" stroke-linecap="round" opacity=".6"/></svg></div>
-            <div class="theme-name">human-AI interaction</div>
-            <div class="theme-desc">Studying what happens when people and AI systems meet in educational contexts — trust, transparency, accessibility, and the design of tools people actually want to use.</div>
+          <div class="theme-card tc-orange">
+            <div class="theme-header">
+              <div class="theme-name">Human-AI Interaction</div>
+            </div>
+            <div class="theme-body">
+              <div class="theme-desc">What happens when AI enters spaces that used to belong entirely to humans? I am curious about trust, transparency, ethics, and privacy and the design of systems that <strong>feel like help rather than surveillance</strong>.</div>
+            </div>
           </div>
         </div>
       </section>
@@ -794,27 +815,27 @@
         <div class="section-head"><span class="section-label">education</span><div class="section-rule"></div></div>
         <div class="edu-list">
           <div class="edu-item">
-            <div class="edu-logo"><img src="TAMUlogo.png" alt="Texas A&M University" style="width:56px;height:56px;object-fit:contain;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:box-shadow 0.2s;"></div>
+            <div class="edu-logo"><img src="TAMUlogo.png" alt="Texas A&M University" style="width:56px;height:56px;object-fit:contain;"></div>
             <div>
               <div class="edu-degree">PhD, Computer Science</div>
               <div class="edu-field">Texas A&amp;M University</div>
-              <div class="edu-meta">2024 – present · College Station, TX</div>
+              <div class="edu-meta">2024 – present</div>
             </div>
           </div>
           <div class="edu-item">
-            <div class="edu-logo"><img src="OSUlogo.png" alt="Oklahoma State University" style="width:56px;height:56px;object-fit:contain;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:box-shadow 0.2s;"></div>
+            <div class="edu-logo"><img src="OSUlogo.png" alt="Oklahoma State University" style="width:56px;height:56px;object-fit:contain;"></div>
             <div>
               <div class="edu-degree">M.S., Management Information Systems</div>
-              <div class="edu-field">Data Science concentration · Oklahoma State University</div>
-              <div class="edu-meta">Oklahoma State University · Stillwater, OK</div>
+              <div class="edu-field">Data Science concentration</div>
+              <div class="edu-meta">Oklahoma State University · May 2019</div>
             </div>
           </div>
           <div class="edu-item">
-            <div class="edu-logo"><img src="Christlogo.png" alt="Christ University" style="width:56px;height:56px;object-fit:contain;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:box-shadow 0.2s;"></div>
+            <div class="edu-logo"><img src="Christlogo.png" alt="Christ University" style="width:56px;height:56px;object-fit:contain;"></div>
             <div>
               <div class="edu-degree">B.S., Electronics &amp; Communication Engineering</div>
-              <div class="edu-field">Christ University · Bangalore, India</div>
-              <div class="edu-meta">Graduated 2015</div>
+              <div class="edu-field">Christ University</div>
+              <div class="edu-meta">May 2016</div>
             </div>
           </div>
         </div>
@@ -850,7 +871,7 @@
       <section class="section" id="experience">
         <div class="section-head"><span class="section-label">experience</span><div class="section-rule"></div></div>
 
-        <div class="exp-institution">
+        <div class="exp-institution tamu">
           <a href="https://tamu.edu" target="_blank" class="exp-inst-name" style="background:#500000;color:#ffffff;padding-left:12px;text-decoration:none;display:block;">Texas A&amp;M University</a>
           <div class="row-list">
             <div class="row-item">
@@ -871,7 +892,7 @@
           </div>
         </div>
 
-        <div class="exp-institution">
+        <div class="exp-institution osu">
           <a href="https://okstate.edu" target="_blank" class="exp-inst-name" style="background:#FF6600;color:#ffffff;padding-left:12px;text-decoration:none;display:block;">Oklahoma State University</a>
           <div class="row-list">
             <div class="row-item">
@@ -895,15 +916,10 @@
             <div class="section-head"><span class="section-label">teaching</span><div class="section-rule"></div></div>
             <div class="row-list">
               <div class="row-item">
-              <div class="row-header"><div class="row-role">Guest Lecturer</div><span class="row-term">Fall 2025</span></div>
-              <div class="row-detail">MGMT 621 · Research Methods for HR · Mays Business School</div>
-                  <div class="row-detail">PSAA 450 · Using Data to Make a Difference · Bush School of Public Policy
-            </div>
-              </div>
-              <div class="row-item">
-              <div class="row-header"><div class="row-role">Guest Lecturer</div><span class="row-term">Fall 2024</span></div>
-              <div class="row-detail">EHRD 490 · Research in HRD/TCM · College of Education &amp; Human Development
-            </div>
+              <div class="row-header"><div class="row-role">Guest Lecturer</div></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>MGMT 621 · Research Methods for HR · Mays Business School</span><span class="row-term">Fall 2025</span></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>PSAA 450 · Using Data to Make a Difference · Bush School of Public Policy</span><span class="row-term">Fall 2025</span></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>EHRD 490 · Research in HRD/TCM · College of Education &amp; Human Development</span><span class="row-term">Fall 2024</span></div>
               </div>
             </div>
           </div>
@@ -911,15 +927,18 @@
             <div class="section-head" id="service"><span class="section-label">service</span><div class="section-rule"></div></div>
             <div class="row-list">
               <div class="row-item">
-              <div class="row-header"><div class="row-role">Program Committee (Reviewer) — AIEd 2026</div><span class="row-term">2026</span></div>
+              <div class="row-header"><div class="row-role">Program Committee (Reviewer)</div></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>AI in Education Conference</span><span class="row-term">2026</span></div>
               </div>
               <div class="row-item">
-              <div class="row-header"><div class="row-role">Peer Reviewer — ASEE Annual Conference</div><span class="row-term">2025, 2026</span></div>
+              <div class="row-header"><div class="row-role">Peer Reviewer</div></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>American Society for Engineering Education Annual Conference</span><span class="row-term">2025, 2026</span></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>Journal of Teaching and Learning with Technology</span><span class="row-term">2025</span></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>Frontiers in Education (FIE)</span><span class="row-term">2025</span></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>EDUCAUSE Annual Conference</span><span class="row-term">2025</span></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>Learning Analytics &amp; Knowledge (LAK)</span><span class="row-term">2025</span></div>
+              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>Learning@Scale (L@S)</span><span class="row-term">2025</span></div>
               </div>
-              <div class="row-item">
-              <div class="row-header"><div class="row-role">Peer Reviewer</div><span class="row-term">2025</span></div>
-              <div class="row-detail">JoTLT · Frontiers in Education (FIE) · EDUCAUSE · L@S · LAK</div>
-            </div>
             </div>
           </div>
         </div>
