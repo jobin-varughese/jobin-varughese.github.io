@@ -77,6 +77,48 @@
     .section:nth-child(7) { animation: fadeUp 0.5s ease 0.49s both; }
     .section:nth-child(8) { animation: fadeUp 0.5s ease 0.54s both; }
 
+/* ── LIGHTBOX ── */
+.lightbox {
+  display: none; position: fixed;
+  inset: 0; z-index: 999;
+  background: rgba(0,0,0,0.92);
+  align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px;
+}
+.lightbox.open { display: flex; }
+.lightbox-img {
+  max-width: 90vw; max-height: 78vh;
+  object-fit: contain; border-radius: 4px;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+}
+.lightbox-cap {
+  font-size: 14px; color: rgba(255,255,255,0.7);
+  font-family: monospace; font-style: italic; text-align: center;
+}
+.lightbox-close {
+  position: absolute; top: 20px; right: 24px;
+  font-size: 28px; color: rgba(255,255,255,0.7);
+  cursor: pointer; background: none; border: none;
+  line-height: 1; transition: color 0.15s;
+}
+.lightbox-close:hover { color: #fff; }
+.lightbox-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  font-size: 32px; color: rgba(255,255,255,0.6);
+  cursor: pointer; background: none; border: none;
+  padding: 12px; line-height: 1; transition: color 0.15s;
+}
+.lightbox-arrow:hover { color: #fff; }
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-counter {
+  position: absolute; bottom: 20px;
+  font-size: 12px; color: rgba(255,255,255,0.4);
+  font-family: monospace;
+}
+.film-frame { cursor: pointer; }
+.film-frame:hover .film-img { opacity: 0.85; transition: opacity 0.15s; }
+    
     /* ── TOPBAR ── */
     .topbar {
       position: sticky;
@@ -557,6 +599,15 @@
     </div>
   </header>
 
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lbClose">✕</button>
+  <button class="lightbox-arrow lightbox-prev" id="lbPrev">‹</button>
+  <img class="lightbox-img" id="lbImg" src="" alt="">
+  <div class="lightbox-cap" id="lbCap"></div>
+  <button class="lightbox-arrow lightbox-next" id="lbNext">›</button>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+  
   <!-- Mobile identity strip — visible when sidebar is hidden -->
   <div class="mobile-strip" id="mobileStrip">
     <div class="ms-photo">
@@ -1075,6 +1126,47 @@
         : (isOpen ? 'bib ↑' : 'bib ↓');
     }
 
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lbImg');
+const lbCap     = document.getElementById('lbCap');
+const lbCounter = document.getElementById('lbCounter');
+const lbClose   = document.getElementById('lbClose');
+const lbPrev    = document.getElementById('lbPrev');
+const lbNext    = document.getElementById('lbNext');
+const frames    = Array.from(document.querySelectorAll('.film-frame'));
+let current = 0;
+
+function openLightbox(index) {
+  current = index;
+  const frame = frames[current];
+  const img = frame.querySelector('img');
+  const cap = frame.querySelector('.film-cap');
+  lbImg.src = img ? img.src : '';
+  lbImg.alt = img ? img.alt : '';
+  lbCap.textContent = cap ? cap.textContent : '';
+  lbCounter.textContent = `${current + 1} / ${frames.length}`;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function showPrev() { openLightbox((current - 1 + frames.length) % frames.length); }
+function showNext() { openLightbox((current + 1) % frames.length); }
+
+frames.forEach((frame, i) => frame.addEventListener('click', () => openLightbox(i)));
+lbClose.addEventListener('click', closeLightbox);
+lbPrev.addEventListener('click', showPrev);
+lbNext.addEventListener('click', showNext);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => {
+  if (!lightbox.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') showPrev();
+  if (e.key === 'ArrowRight') showNext();
+});
+    
     // ── STICKY SECTION LABEL ──
     const indicator = document.getElementById('scrollIndicator');
     const sections = document.querySelectorAll('main .section[id], main .film-section[id]');
