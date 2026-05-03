@@ -275,6 +275,10 @@ margin: 0 -0.25rem 0 -0.25rem;
 
     .sb-section-label {
       font-size: 11px; font-weight: 500;
+      background: rgba(0,0,0,0.04);
+border-radius: 4px;
+padding: 4px 8px;
+margin-left: -8px;
       text-transform: uppercase; letter-spacing: 0.1em;
       color: #0a7a7a; margin-bottom: 0.8rem; flex-shrink: 0;
       display: flex; align-items: center; gap: 7px;
@@ -289,11 +293,7 @@ margin: 0 -0.25rem 0 -0.25rem;
       50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 0 5px rgba(217,79,43,0); }
     }
 
-    .sb-news-wrap { flex: 1; overflow-y: auto; min-height: 0; padding-right: 8px; margin-right: -4px; background: rgba(0,0,0,0.02);
-border-radius: 6px;
-padding: 8px 6px;
-border-bottom: 0.5px solid rgba(0,0,0,0.1);
-margin-bottom: 0.75rem; }
+    .sb-news-wrap { flex: 1; overflow-y: auto; min-height: 0; padding-right: 8px; margin-right: -4px;  }
     .sb-news-wrap::-webkit-scrollbar { width: 3px; }
     .sb-news-wrap::-webkit-scrollbar-track { background: transparent; }
     .sb-news-wrap::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 2px; }
@@ -314,7 +314,7 @@ margin-bottom: 0.75rem; }
     .tag-award { background: rgba(80,0,0,0.07); color: #500000; border: 0.5px solid rgba(80,0,0,0.3); }
     .tag-fellowship { background: rgba(80,0,0,0.07); color: #500000; border: 0.5px solid rgba(80,0,0,0.3); }
 
-    .sb-bottom { flex-shrink: 0; padding-top: 1rem; border-top: none; margin-top: 0.75rem; }
+    .sb-bottom { flex-shrink: 0; padding-top: 1rem; border-top: none; margin-top: 0rem; }
 .sb-links-label { display: none; }
 .sb-links { display: flex; flex-direction: column; gap: 6px; }
     .sb-link-btn {
