@@ -592,28 +592,16 @@ border-radius: 0;
       .section { padding: 2rem 1.75rem; }
     }
 
-    /* ── PUB FILTERS ── */
-    .pub-filters { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
-    .pub-filter-btn {
-      font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace;
-      letter-spacing: .07em; text-transform: uppercase;
-      padding: 4px 12px; border-radius: 4px; cursor: pointer;
-      border: 0.5px solid rgba(0,0,0,0.15); background: none;
-      color: var(--content-secondary); transition: all 0.15s;
-    }
+    .pub-filters { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 0; }
+    .pub-filter-btn { font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace; letter-spacing: .07em; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; cursor: pointer; border: 0.5px solid rgba(0,0,0,0.15); background: none; color: var(--content-secondary); transition: all 0.15s; }
     .pub-filter-btn:hover { background: rgba(0,0,0,0.04); }
     .pub-filter-btn.active { color: #ffffff; border-color: transparent; }
     .pub-filter-btn[data-filter="all"].active { background: #2a2a3e; }
     .pub-filter-btn[data-filter="aied"].active { background: #6a2a2a; }
     .pub-filter-btn[data-filter="la"].active { background: #2a7a7a; }
-    .pub-filter-btn[data-filter="ced"].active { background: #3a5a8a; }
+    .pub-filter-btn[data-filter="hax"].active { background: #3a5a8a; }
     .pub-filter-btn[data-filter="selected"].active { background: #444; }
-    .pub-row { transition: opacity 0.2s; }
     .pub-row.hidden { display: none; }
-    .pub-tag-dot {
-      display: inline-block; width: 7px; height: 7px;
-      border-radius: 50%; margin-right: 4px; vertical-align: middle;
-    }
   </style>
 </head>
 <body>
@@ -818,17 +806,11 @@ border-radius: 0;
       </section>
 
       <section class="section" id="publications">
-        <div class="section-head" style="justify-content:space-between; align-items:center;"><span class="section-label">publications</span><div class="pub-filters" style="margin-bottom:0;">
-          <button class="pub-filter-btn active" data-filter="selected">Selected</button>
-          <button class="pub-filter-btn" data-filter="all">All</button>
-          <button class="pub-filter-btn" data-filter="aied">AI in Education</button>
-          <button class="pub-filter-btn" data-filter="la">Learning Analytics</button>
-          <button class="pub-filter-btn" data-filter="hax">HAX</button>
-        </div></div>
+        <div class="section-head" style="justify-content:space-between;align-items:center;margin-bottom:1.5rem;"><span class="section-label">publications</span><div class="pub-filters"><button class="pub-filter-btn active" data-filter="selected">Selected</button><button class="pub-filter-btn" data-filter="all">All</button><button class="pub-filter-btn" data-filter="aied">AI in Education</button><button class="pub-filter-btn" data-filter="la">Learning Analytics</button><button class="pub-filter-btn" data-filter="hax">HAX</button></div></div>
         <div class="pub-list">
 
           <div class="pub-row" data-tags="la" data-selected="true">
-            <div class="pub-thumb pt-cyan"><img src="img/p1.svg" alt="figure"></div>
+            <div class="pub-thumb pt-cyan"><!-- replace with: <img src="img/p1.jpg" alt="figure"> --></div>
             <div>
               <div class="pub-title">When Behavioral Traces Mislead: Evaluating Evidence Adequacy in Learning Analytics</div>
               <div class="pub-authors">Junhyeon Kwon*, <u><strong>Jobin Varughese</strong></u>*, Maria Teleki, Mohsen Dorodchi · 2026</div>
@@ -850,7 +832,7 @@ border-radius: 0;
           </div>
 
            <div class="pub-row" data-tags="la">
-            <div class="pub-thumb pt-orange"><img src="img/p2.svg" alt="figure">
+            <div class="pub-thumb pt-orange" data-tags="la"><img src="img/p2.svg" alt="figure"></div>
             <div>
               <div class="pub-title">Diagnosing Epistemic Frames in Digital Learning Environments Using Learning Analytics: Synthesis and Implications in Engineering Education</div>
               <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Gibin Raju, Kristi J. Shryock · 2026</div>
@@ -872,7 +854,7 @@ border-radius: 0;
           </div>
  
           <div class="pub-row" data-tags="la">
-            <div class="pub-thumb pt-orange"><img src="img/p3.svg" alt="figure">
+            <div class="pub-thumb pt-orange" data-tags="la"><img src="img/p3.svg" alt="figure"></div>
             <div>
               <div class="pub-title">Building a Methodology to Connect Course Design with Student Outcomes: A Framework for Engineering Education</div>
               <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Gibin Raju, Yeonji Jung, Sunay Palsole · 2026</div>
@@ -894,7 +876,7 @@ border-radius: 0;
           </div>
  
           <div class="pub-row" data-tags="aied hax" data-selected="true">
-            <div class="pub-thumb pt-orange"><img src="img/p4.svg" alt="figure">
+            <div class="pub-thumb pt-orange" data-tags="aied hax" data-selected="true"><img src="img/p4.svg" alt="figure"></div>
             <div>
               <div class="pub-title">Daily Quizzes for Computing Competency: Strengthening Fundamentals and Workforce Readiness in Senior Capstone</div>
               <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u>, LaTasha T. Starr · 2026</div>
@@ -917,7 +899,7 @@ border-radius: 0;
           </div>
  
           <div class="pub-row" data-tags="la">
-            <div class="pub-thumb pt-orange"><img src="img/p5.svg" alt="figure">
+            <div class="pub-thumb pt-orange" data-tags="la"><img src="img/p5.svg" alt="figure"></div>
             <div>
               <div class="pub-title">Leveraging Graph Theory to Analyze Curriculum Structure and Student Navigation in Engineering Education</div>
               <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Yeonji Jung, Gibin Raju, Sunay Palsole · 2026</div>
@@ -939,7 +921,7 @@ border-radius: 0;
           </div>
  
           <div class="pub-row" data-tags="aied hax" data-selected="true">
-            <div class="pub-thumb pt-cyan"><img src="img/p6.svg" alt="figure"></div>
+            <div class="pub-thumb pt-cyan" data-tags="aied hax" data-selected="true"><img src="img/p6.svg" alt="figure"></div>
             <div>
               <div class="pub-title">Teaching the Intuition Behind Artificial Intelligence: Understanding Before Automation</div>
               <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u> · 2026</div>
@@ -961,7 +943,7 @@ border-radius: 0;
           </div>
  
           <div class="pub-row" data-tags="hax" data-selected="true">
-            <div class="pub-thumb pt-orange"><img src="img/Teammates.png" alt="figure"></div>
+            <div class="pub-thumb pt-orange" data-tags="hax" data-selected="true"><img src="img/Teammates.png" alt="figure"></div>
             <div>
               <div class="pub-title">How Engineering Students Describe Good Teammates: A Thematic Analysis of Peer Evaluations Across Multiple Capstone Cohorts</div>
               <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u> · 2026</div>
@@ -1234,10 +1216,8 @@ document.addEventListener('keydown', e => {
       });
     }
 
-    // ── PUB FILTERS ──
     const filterBtns = document.querySelectorAll('.pub-filter-btn');
     const pubRows = document.querySelectorAll('.pub-row[data-tags]');
-
     function applyFilter(filter) {
       filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
       pubRows.forEach(row => {
@@ -1250,12 +1230,7 @@ document.addEventListener('keydown', e => {
         row.classList.toggle('hidden', !show);
       });
     }
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
-    });
-
-    // Default — selected
+    filterBtns.forEach(btn => btn.addEventListener('click', () => applyFilter(btn.dataset.filter)));
     applyFilter('selected');
 
   </script>
