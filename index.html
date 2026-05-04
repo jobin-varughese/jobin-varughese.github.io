@@ -590,6 +590,29 @@ border-radius: 0;
       .fellowship-list { grid-template-columns: 1fr 1fr; }
       .section { padding: 2rem 1.75rem; }
     }
+
+    /* ── PUB FILTERS ── */
+    .pub-filters { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .pub-filter-btn {
+      font-size: 11px; font-weight: 700; font-family: 'DM Mono', monospace;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 4px; cursor: pointer;
+      border: 0.5px solid rgba(0,0,0,0.15); background: none;
+      color: var(--content-secondary); transition: all 0.15s;
+    }
+    .pub-filter-btn:hover { background: rgba(0,0,0,0.04); }
+    .pub-filter-btn.active { color: #ffffff; border-color: transparent; }
+    .pub-filter-btn[data-filter="all"].active { background: #2a2a3e; }
+    .pub-filter-btn[data-filter="aied"].active { background: #6a2a2a; }
+    .pub-filter-btn[data-filter="la"].active { background: #2a7a7a; }
+    .pub-filter-btn[data-filter="ced"].active { background: #3a5a8a; }
+    .pub-filter-btn[data-filter="selected"].active { background: #444; }
+    .pub-row { transition: opacity 0.2s; }
+    .pub-row.hidden { display: none; }
+    .pub-tag-dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; margin-right: 4px; vertical-align: middle;
+    }
   </style>
 </head>
 <body>
@@ -795,10 +818,17 @@ border-radius: 0;
 
       <section class="section" id="publications">
         <div class="section-head"><span class="section-label">publications</span><div class="section-rule"></div></div>
+        <div class="pub-filters">
+          <button class="pub-filter-btn active" data-filter="selected">Selected</button>
+          <button class="pub-filter-btn" data-filter="all">All</button>
+          <button class="pub-filter-btn" data-filter="aied">AI in Education</button>
+          <button class="pub-filter-btn" data-filter="la">Learning Analytics</button>
+          <button class="pub-filter-btn" data-filter="ced">Computing Ed</button>
+        </div>
         <div class="pub-list">
 
-          <div class="pub-row">
-            <div class="pub-thumb pt-cyan"><!-- replace with: <img src="img/p1.jpg" alt="figure"> --></div>
+          <div class="pub-row" data-tags="la" data-selected="true">
+            <div class="pub-thumb pt-cyan"><img src="img/p1.svg" alt="figure"></div>
             <div>
               <div class="pub-title">When Behavioral Traces Mislead: Evaluating Evidence Adequacy in Learning Analytics</div>
               <div class="pub-authors">Junhyeon Kwon*, <u><strong>Jobin Varughese</strong></u>*, Maria Teleki, Mohsen Dorodchi · 2026</div>
@@ -908,8 +938,8 @@ border-radius: 0;
             </div>
           </div>
  
-          <div class="pub-row">
-            <div class="pub-thumb pt-cyan"><!-- <img src="img/p6.jpg" alt="figure"> --></div>
+          <div class="pub-row" data-tags="aied ced" data-selected="true">
+            <div class="pub-thumb pt-cyan"><img src="img/p6.svg" alt="figure"></div>
             <div>
               <div class="pub-title">Teaching the Intuition Behind Artificial Intelligence: Understanding Before Automation</div>
               <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u> · 2026</div>
@@ -930,8 +960,8 @@ border-radius: 0;
             </div>
           </div>
  
-          <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p7.jpg" alt="figure"> --></div>
+          <div class="pub-row" data-tags="ced" data-selected="true">
+            <div class="pub-thumb pt-orange"><img src="img/Teammates.png" alt="figure"></div>
             <div>
               <div class="pub-title">How Engineering Students Describe Good Teammates: A Thematic Analysis of Peer Evaluations Across Multiple Capstone Cohorts</div>
               <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u> · 2026</div>
@@ -1203,6 +1233,31 @@ document.addEventListener('keydown', e => {
         filmWrap.scrollLeft = scrollLeft - (e.pageX - filmWrap.offsetLeft - startX) * 1.5;
       });
     }
+
+    // ── PUB FILTERS ──
+    const filterBtns = document.querySelectorAll('.pub-filter-btn');
+    const pubRows = document.querySelectorAll('.pub-row[data-tags]');
+
+    function applyFilter(filter) {
+      filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+      pubRows.forEach(row => {
+        const tags = row.dataset.tags || '';
+        const selected = row.dataset.selected === 'true';
+        let show = false;
+        if (filter === 'all') show = true;
+        else if (filter === 'selected') show = selected;
+        else show = tags.split(' ').includes(filter);
+        row.classList.toggle('hidden', !show);
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => applyFilter(btn.dataset.filter));
+    });
+
+    // Default — selected
+    applyFilter('selected');
+
   </script>
 
 </body>
