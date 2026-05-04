@@ -516,6 +516,7 @@ border-radius: 0;
       flex-shrink: 0; border: 0.5px solid var(--content-border);
       overflow: hidden; background: #e8f0f8;
     }
+    .pub-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
     .pt-cyan { background: #e8f0f8; }
     .pt-lime { background: #e8f0f8; }
     .pt-orange { background: #e8f0f8; }
@@ -807,7 +808,7 @@ border-radius: 0;
           </div>
           <div class="theme-card tc-orange">
             <div class="theme-header">
-              <div class="theme-name">Human-AI Interaction</div>
+              <div class="theme-name">Human-AI Interaction (HAX)</div>
             </div>
             <div class="theme-body">
               <div class="theme-desc">What happens when AI enters spaces that used to belong entirely to humans? I am curious about trust, transparency, ethics, and privacy and the design of systems that <strong>feel like help rather than surveillance</strong>.</div>
@@ -817,14 +818,13 @@ border-radius: 0;
       </section>
 
       <section class="section" id="publications">
-        <div class="section-head"><span class="section-label">publications</span><div class="section-rule"></div></div>
-        <div class="pub-filters">
+        <div class="section-head" style="justify-content:space-between; align-items:center;"><span class="section-label">publications</span><div class="pub-filters" style="margin-bottom:0;">
           <button class="pub-filter-btn active" data-filter="selected">Selected</button>
           <button class="pub-filter-btn" data-filter="all">All</button>
           <button class="pub-filter-btn" data-filter="aied">AI in Education</button>
           <button class="pub-filter-btn" data-filter="la">Learning Analytics</button>
-          <button class="pub-filter-btn" data-filter="ced">Computing Ed</button>
-        </div>
+          <button class="pub-filter-btn" data-filter="hax">HAX</button>
+        </div></div>
         <div class="pub-list">
 
           <div class="pub-row" data-tags="la" data-selected="true">
@@ -849,8 +849,8 @@ border-radius: 0;
             </div>
           </div>
 
-           <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p2.jpg" alt="figure"> --></div>
+           <div class="pub-row" data-tags="la">
+            <div class="pub-thumb pt-orange"><img src="img/p2.svg" alt="figure">
             <div>
               <div class="pub-title">Diagnosing Epistemic Frames in Digital Learning Environments Using Learning Analytics: Synthesis and Implications in Engineering Education</div>
               <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Gibin Raju, Kristi J. Shryock · 2026</div>
@@ -871,8 +871,8 @@ border-radius: 0;
             </div>
           </div>
  
-          <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p3.jpg" alt="figure"> --></div>
+          <div class="pub-row" data-tags="la">
+            <div class="pub-thumb pt-orange"><img src="img/p3.svg" alt="figure">
             <div>
               <div class="pub-title">Building a Methodology to Connect Course Design with Student Outcomes: A Framework for Engineering Education</div>
               <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Gibin Raju, Yeonji Jung, Sunay Palsole · 2026</div>
@@ -893,8 +893,8 @@ border-radius: 0;
             </div>
           </div>
  
-          <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p4.jpg" alt="figure"> --></div>
+          <div class="pub-row" data-tags="aied hax" data-selected="true">
+            <div class="pub-thumb pt-orange"><img src="img/p4.svg" alt="figure">
             <div>
               <div class="pub-title">Daily Quizzes for Computing Competency: Strengthening Fundamentals and Workforce Readiness in Senior Capstone</div>
               <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u>, LaTasha T. Starr · 2026</div>
@@ -916,8 +916,8 @@ border-radius: 0;
             </div>
           </div>
  
-          <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p5.jpg" alt="figure"> --></div>
+          <div class="pub-row" data-tags="la">
+            <div class="pub-thumb pt-orange"><img src="img/p5.svg" alt="figure">
             <div>
               <div class="pub-title">Leveraging Graph Theory to Analyze Curriculum Structure and Student Navigation in Engineering Education</div>
               <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Yeonji Jung, Gibin Raju, Sunay Palsole · 2026</div>
@@ -938,7 +938,7 @@ border-radius: 0;
             </div>
           </div>
  
-          <div class="pub-row" data-tags="aied ced" data-selected="true">
+          <div class="pub-row" data-tags="aied hax" data-selected="true">
             <div class="pub-thumb pt-cyan"><img src="img/p6.svg" alt="figure"></div>
             <div>
               <div class="pub-title">Teaching the Intuition Behind Artificial Intelligence: Understanding Before Automation</div>
@@ -960,7 +960,7 @@ border-radius: 0;
             </div>
           </div>
  
-          <div class="pub-row" data-tags="ced" data-selected="true">
+          <div class="pub-row" data-tags="hax" data-selected="true">
             <div class="pub-thumb pt-orange"><img src="img/Teammates.png" alt="figure"></div>
             <div>
               <div class="pub-title">How Engineering Students Describe Good Teammates: A Thematic Analysis of Peer Evaluations Across Multiple Capstone Cohorts</div>
