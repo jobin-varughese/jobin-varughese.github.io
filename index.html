@@ -6,22 +6,7 @@
   <title>Jobin Varughese</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-  
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8996XWQK9L"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8996XWQK9L');
-</script>
-  <meta name="description" content="Jobin Varughese — PhD Student at Texas A&M. Research in AI in Education, Learning Analytics, and Human-AI Interaction.">
-<meta property="og:title" content="Jobin Varughese">
-<meta property="og:description" content="PhD Student · Texas A&M · AI in Education · Learning Analytics">
-<meta property="og:image" content="https://jobin-varughese.github.io/og-image.png">
-<meta property="og:url" content="https://jobin-varughese.github.io">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -41,7 +26,7 @@
       --content-secondary: #4a4a62;
       --content-tertiary: #6a6a82;
       --content-border: rgba(0,0,0,0.07);
-      --sidebar-width: 255px;
+      --sidebar-width: 260px;
       --max-width: 1200px;
       --topbar-h: 58px;
     }
@@ -79,48 +64,6 @@
     .section:nth-child(7) { animation: fadeUp 0.5s ease 0.49s both; }
     .section:nth-child(8) { animation: fadeUp 0.5s ease 0.54s both; }
 
-/* ── LIGHTBOX ── */
-.lightbox {
-  display: none; position: fixed;
-  inset: 0; z-index: 999;
-  background: rgba(0,0,0,0.92);
-  align-items: center; justify-content: center;
-  flex-direction: column; gap: 16px;
-}
-.lightbox.open { display: flex; }
-.lightbox-img {
-  max-width: 90vw; max-height: 78vh;
-  object-fit: contain; border-radius: 4px;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.6);
-}
-.lightbox-cap {
-  font-size: 14px; color: rgba(255,255,255,0.7);
-  font-family: monospace; font-style: italic; text-align: center;
-}
-.lightbox-close {
-  position: absolute; top: 20px; right: 24px;
-  font-size: 28px; color: rgba(255,255,255,0.7);
-  cursor: pointer; background: none; border: none;
-  line-height: 1; transition: color 0.15s;
-}
-.lightbox-close:hover { color: #fff; }
-.lightbox-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  font-size: 32px; color: rgba(255,255,255,0.6);
-  cursor: pointer; background: none; border: none;
-  padding: 12px; line-height: 1; transition: color 0.15s;
-}
-.lightbox-arrow:hover { color: #fff; }
-.lightbox-prev { left: 20px; }
-.lightbox-next { right: 20px; }
-.lightbox-counter {
-  position: absolute; bottom: 20px;
-  font-size: 12px; color: rgba(255,255,255,0.4);
-  font-family: monospace;
-}
-.film-frame { cursor: pointer; }
-.film-frame:hover .film-img { opacity: 0.85; transition: opacity 0.15s; }
-    
     /* ── TOPBAR ── */
     .topbar {
       position: sticky;
@@ -146,18 +89,17 @@
       letter-spacing: 0.05em;
       white-space: nowrap;
       line-height: 1;
-      text-align: left;
+      text-align: center;
       padding: 0 0.5rem;
     }
     .tb-name-bold  { font-weight: 800; }
     .tb-name-light { font-weight: 300; }
-    /* nav right aligned */
+    /* nav fills ALL remaining space evenly */
     .tb-nav {
       flex: 1;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
-      gap: 1.5rem;
+      justify-content: space-around;
       padding-right: 0;
     }
     .tb-nav a { font-size: 17px; color: #c8c8d8; transition: color 0.15s; white-space: nowrap; }
@@ -179,23 +121,21 @@
       display: none;
       background: var(--warm);
       border-bottom: 0.5px solid rgba(0,0,0,0.1);
-      padding: 0;
-      align-items: stretch;
-      gap: 0;
-      min-height: 72px;
+      padding: 14px 1.25rem;
+      align-items: center;
+      gap: 14px;
     }
     .ms-photo {
-      width: 72px; height: auto; border-radius: 0;
-      background: #d8d6ce; border: none;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: #d8d6ce; border: 2px solid rgba(0,0,0,0.1);
       overflow: hidden; flex-shrink: 0;
-      display: flex; align-items: stretch;
-      align-self: stretch;
+      display: flex; align-items: center; justify-content: center;
     }
-    .ms-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block; }
-    .ms-info { flex: 1; min-width: 0; padding: 14px 1rem; }
+    .ms-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .ms-info { flex: 1; min-width: 0; }
     .ms-name { font-size: 15px; font-weight: 500; color: var(--fg); margin-bottom: 2px; }
     .ms-role { font-size: 12px; color: var(--fg2); }
-    .ms-links { display: flex; gap: 8px; flex-shrink: 0; padding: 14px 1rem; align-items: center; }
+    .ms-links { display: flex; gap: 8px; flex-shrink: 0; }
     .ms-link {
       width: 34px; height: 34px; border-radius: 8px;
       background: rgba(255,255,255,0.7); border: 0.5px solid rgba(0,0,0,0.1);
@@ -236,14 +176,12 @@
       width: 100%;
       margin: 0 auto;
       min-height: calc(100vh - var(--topbar-h));
-      align-items: flex-start;
     }
 
     /* ── SIDEBAR ── */
     .sidebar {
       width: var(--sidebar-width);
       flex-shrink: 0;
-
       background: var(--warm);
       border-right: 0.5px solid rgba(0,0,0,0.09);
       display: flex;
@@ -252,13 +190,13 @@
       top: var(--topbar-h);
       height: calc(100vh - var(--topbar-h));
       overflow: hidden;
-      padding: 0 0.25rem 0.5rem 0.25rem;
+      padding: 0 1.25rem 1.5rem 1.25rem;
     }
 
-    .sb-identity { text-align: center; margin: 0 -1.25rem 0.75rem -1.25rem; flex-shrink: 0; background: rgba(255,255,255,0.75); padding: 0.65rem 1.25rem 0.65rem; border-left: 3px solid #500000;  }
+    .sb-identity { text-align: center; margin-bottom: 0.5rem; flex-shrink: 0; }
     .sb-photo {
-     width: calc(100% + 0.5rem);
-margin: 0 -0.25rem 0 -0.25rem;
+      width: calc(100% + 1.25rem);
+      margin: 0 -1.25rem 1.25rem 0;
       height: 240px;
       border-radius: 0;
       background: #d8d6ce;
@@ -267,34 +205,19 @@ margin: 0 -0.25rem 0 -0.25rem;
       flex-shrink: 0;
     }
     .sb-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-    .sb-role { font-size: 13px; color: var(--fg2); line-height: 1.5; margin-bottom: 2px; }
-    .sb-role-tamu { font-size: 14px; font-weight: 700; color: #500000; margin-bottom: 0; }
+    .sb-role { font-size: 14px; color: var(--fg2); line-height: 1.5; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sb-role-tamu { font-size: 15px; font-weight: 700; color: #500000; margin-bottom: 0; font-variant: small-caps; letter-spacing: 0.05em; }
     .sb-email { font-size: 14px; color: #0a7a7a; font-family: 'DM Mono', monospace; }
 
-    .sb-divider { display: none; height: 0.5px; background: rgba(0,0,0,0.1); margin: 0 0 0.75rem 0; flex-shrink: 0; }
+    .sb-divider { height: 0.5px; background: rgba(0,0,0,0.1); margin: 0.6rem 0; flex-shrink: 0; }
 
     .sb-section-label {
       font-size: 11px; font-weight: 500;
-      background: #222233;
-color: #9898b0;
-margin: 0 -0.25rem 0.8rem -0.25rem;
-padding: 6px 8px 6px 0.75rem;
-border-radius: 0;
       text-transform: uppercase; letter-spacing: 0.1em;
       color: #0a7a7a; margin-bottom: 0.8rem; flex-shrink: 0;
-      display: flex; align-items: center; gap: 7px;
-    }
-    .sb-live-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background:#c8c8d8; flex-shrink: 0;
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(217,79,43,0.5); }
-      50% { opacity: 0.8; transform: scale(1.2); box-shadow: 0 0 0 5px rgba(217,79,43,0); }
     }
 
-    .sb-news-wrap { flex: 1; overflow-y: auto; min-height: 0; padding-right: 8px; margin-right: -4px;  }
+    .sb-news-wrap { flex: 1; overflow-y: auto; min-height: 0; padding-right: 3px; }
     .sb-news-wrap::-webkit-scrollbar { width: 3px; }
     .sb-news-wrap::-webkit-scrollbar-track { background: transparent; }
     .sb-news-wrap::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 2px; }
@@ -302,7 +225,7 @@ border-radius: 0;
     .sb-news { display: flex; flex-direction: column; gap: 10px; }
     .sb-news-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px; }
     .sb-news-date { font-size: 11px; color: var(--fg3); font-family: 'DM Mono', monospace; }
-    .sb-news-text { font-size: 11px; color: var(--fg); line-height: 1.5; }
+    .sb-news-text { font-size: 13px; color: var(--fg); line-height: 1.5; }
     .sb-tag {
       display: inline-block; font-size: 11px; padding: 2px 8px;
       border-radius: 3px; font-weight: 500; font-family: 'DM Mono', monospace;
@@ -310,14 +233,10 @@ border-radius: 0;
     .tag-paper { background: #e0f7f7; color: #0a5050; border: 0.5px solid #5bbfbf; }
     .tag-talk  { background: #eaf5e0; color: #2a5010; border: 0.5px solid #82c45e; }
     .tag-role  { background: #faf0e6; color: #6a3010; border: 0.5px solid #e89660; }
-    .tag-grant { background: #eaf5e0; color: #2a5010; border: 0.5px solid #82c45e; }
-    .tag-cert  { background: #e8f0f8; color: #0a3a6a; border: 0.5px solid #5bbfbf; }
-    .tag-award { background: rgba(80,0,0,0.07); color: #500000; border: 0.5px solid rgba(80,0,0,0.3); }
-    .tag-fellowship { background: rgba(80,0,0,0.07); color: #500000; border: 0.5px solid rgba(80,0,0,0.3); }
 
-    .sb-bottom { flex-shrink: 0; padding-top: 1rem; border-top: none; margin-top: 0rem; }
-.sb-links-label { display: none; }
-.sb-links { display: flex; flex-direction: column; gap: 6px; }
+    .sb-bottom { flex-shrink: 0; padding-top: 1rem; border-top: 0.5px solid rgba(0,0,0,0.1); margin-top: 0.75rem; }
+    .sb-links-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--fg3); margin-bottom: 9px; }
+    .sb-links { display: flex; flex-direction: column; gap: 6px; }
     .sb-link-btn {
       display: flex; align-items: center; gap: 9px;
       padding: 7px 11px; border: 0.5px solid rgba(0,0,0,0.1);
@@ -329,19 +248,15 @@ border-radius: 0;
     .sb-link-label { font-size: 14px; color: var(--fg2); }
 
     /* ── MAIN CONTENT ── */
-    /* ── RIGHT PANEL ── */
-    .right-panel { flex: 1; display: flex; background: var(--warm); min-width: 0; }
     .main-content {
       flex: 1; min-width: 0;
       display: flex; flex-direction: column;
       background: var(--content-bg);
       box-shadow: -1px 0 0 rgba(0,0,0,0.06), 1px 0 0 rgba(0,0,0,0.04);
     }
-    .right-margin { display: none; }
 
     /* ── SECTIONS ── */
-    .section { padding: 2.25rem 2.75rem; border-bottom: 0.5px solid var(--content-border); width: 100%; box-sizing: border-box; }
-    .section#about { padding-top: 0.75rem; padding-bottom: 1.25rem; }
+    .section { padding: 2.25rem 2.75rem; border-bottom: 0.5px solid var(--content-border); }
     .section:last-child { border-bottom: none; padding-bottom: 3rem; }
 
     .section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 1.5rem; }
@@ -352,48 +267,48 @@ border-radius: 0;
     }
     .section-rule { flex: 1; max-width: 65%; height: 0.5px; background: var(--content-border); }
 
-    .bio { font-family: 'Lora', serif; font-size: 20px; line-height: 1.9; color: var(--content-text); max-width: 100%; word-wrap: break-word; overflow-wrap: break-word; }
+    .bio { font-family: 'Lora', serif; font-size: 20px; line-height: 1.9; color: var(--content-text); max-width: 100%; }
     .bio strong { font-weight: 500; }
 
     .themes { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
     .theme-card {
       border: 0.5px solid var(--content-border); border-radius: 12px;
-      overflow: hidden; background: #fafaf8;
-      transition: box-shadow 0.2s;
+      padding: 1.25rem 1.1rem; background: #fafaf8; transition: background 0.15s;
     }
-    .theme-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-    .theme-header {
-      padding: 0.55rem 1.1rem;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .tc-cyan  .theme-header { background: #6a2a2a; }
-    .tc-lime  .theme-header { background: #2a7a7a; }
-    .tc-orange .theme-header { background: #3a5a8a; }
-    .theme-name { font-size: 12px; font-weight: 700; color: #ffffff; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'Open Sans', sans-serif; }
-    .theme-body { padding: 1rem 1.1rem; }
-    .theme-desc { font-size: 13px; color: var(--content-secondary); line-height: 1.65; }
+    .theme-card:hover { background: #f4f3ef; }
+    .theme-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 0.75rem; }
+    .ti-cyan { background: #e0f7f7; } .ti-lime { background: #eaf5e0; } .ti-orange { background: #faf0e6; }
+    .theme-name { font-size: 15px; font-weight: 500; color: var(--content-text); margin-bottom: 5px; }
+    .theme-desc { font-size: 13px; color: var(--content-secondary); line-height: 1.6; }
 
     .pub-list { display: flex; flex-direction: column; }
     .pub-row {
-      display: grid; grid-template-columns: 90px 1fr; gap: 16px;
+      display: grid; grid-template-columns: 68px 1fr; gap: 16px;
       padding: 16px 0; border-bottom: 0.5px solid var(--content-border);
-      align-items: start;
     }
     .pub-row:last-child { border-bottom: none; }
-    .pub-title { font-size: 15px; font-weight: 500; color: var(--content-text); line-height: 1.5; margin-bottom: 4px; overflow-wrap: break-word; }
+    .pub-thumb { width: 68px; height: 54px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 0.5px solid var(--content-border); }
+    .pt-cyan { background: #e0f7f7; } .pt-lime { background: #eaf5e0; } .pt-orange { background: #faf0e6; }
+    .pub-title { font-size: 15px; font-weight: 500; color: var(--content-text); line-height: 1.5; margin-bottom: 4px; }
     .pub-authors { font-size: 13px; color: var(--content-secondary); margin-bottom: 8px; }
     .pub-footer { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
-    .pub-venue { font-size: 11px; padding: 2px 9px; border-radius: 4px; font-weight: 500; font-family: 'DM Mono', monospace; background: rgba(0,0,0,0.05); color: var(--content-secondary); border: 0.5px solid rgba(0,0,0,0.15); }
+    .pub-venue { font-size: 12px; padding: 2px 10px; border-radius: 4px; font-weight: 600; font-family: 'DM Mono', monospace; background: rgba(80,0,0,0.07); color: #500000; border: 0.5px solid rgba(80,0,0,0.18); }
     .pv-cyan, .pv-lime, .pv-orange {}
-    .pub-link { font-size: 13px; color: var(--content-tertiary); border: 0.5px solid rgba(0,0,0,0.18); border-radius: 4px; padding: 2px 8px; transition: color 0.15s, border-color 0.15s; cursor: pointer; background: none; font-family: inherit; }
+    
+    
+    
+    .pub-link { font-size: 13px; color: var(--content-tertiary); border: 0.5px solid rgba(0,0,0,0.18); border-radius: 4px; padding: 2px 8px; transition: color 0.15s, border-color 0.15s; }
     .pub-link:hover { color: var(--content-text); border-color: rgba(0,0,0,0.35); }
-    .pub-expand { display: none; margin-top: 10px; padding: 10px 12px; background: var(--warm); border-radius: 6px; border: 0.5px solid var(--content-border); font-size: 13px; color: var(--content-secondary); line-height: 1.7; }
-    .pub-expand.open { display: block; }
-    .pub-expand pre { font-family: 'DM Mono', monospace; font-size: 11px; white-space: pre-wrap; color: var(--content-secondary); }
 
     .teaching-service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem; }
     .row-list { display: flex; flex-direction: column; }
     .row-list-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+    .row-item {
+      display: grid; grid-template-columns: 140px 1fr; gap: 14px;
+      padding: 14px 0; border-bottom: 0.5px solid var(--content-border); align-items: start;
+    }
+    .row-item:last-child { border-bottom: none; }
+    .row-term { font-size: 13px; color: var(--content-tertiary); padding-top: 2px; font-family: 'DM Mono', monospace; line-height: 1.5; }
     .row-role { font-size: 15px; font-weight: 500; color: var(--content-text); }
     .row-detail { font-size: 13px; color: var(--content-secondary); margin-top: 3px; line-height: 1.5; }
 
@@ -497,102 +412,35 @@ border-radius: 0;
       display: flex; align-items: center; justify-content: center;
       font-size: 11px; color: #999; font-style: italic;
     }
-    .film-img img { width: 100%; height: 100%; object-fit: cover;  image-rendering: -webkit-optimize-contrast; }
+    .film-img img { width: 100%; height: 100%; object-fit: cover; }
     .film-cap {
       font-size: 11px; color: var(--fg3);
       margin-top: 6px; font-style: italic;
       font-family: 'DM Mono', monospace;
     }
 
-    /* ── PUB THUMB — fixed square ── */
-    .pub-thumb {
-      width: 90px; height: 90px; min-height: 90px;
-      align-self: flex-start;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; border: 0.5px solid var(--content-border);
-      overflow: hidden; background: #e8f0f8;
-    }
-    .pt-cyan { background: #e8f0f8; }
-    .pt-lime { background: #e8f0f8; }
-    .pt-orange { background: #e8f0f8; }
-
-    /* ── FELLOWSHIP CARDS ── */
-    .fellowship-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
-    .fellowship-item {
-      border: 0.5px solid var(--content-border); border-radius: 10px;
-      padding: 1rem 1.1rem; background: #fafaf8;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .fellowship-badge {
-      font-size: 10px; font-weight: 700; font-family: 'DM Mono', monospace;
-      display: inline-block; padding: 3px 8px; border-radius: 4px;
-      align-self: flex-start; margin-bottom: 4px;
-    }
-    .fellowship-badge.nsf { background: rgba(80,0,0,0.07); color: #500000; border: 0.5px solid rgba(80,0,0,0.2); }
-    .fellowship-badge.gal { background: #eaf5e0; color: #2a5a10; border: 0.5px solid #82c45e; }
-    .fellowship-badge.award { background: #faf0e6; color: #7a3a10; border: 0.5px solid #e89660; }
-    .fellowship-title { font-size: 13px; font-weight: 500; color: var(--content-text); line-height: 1.4; }
-    .fellowship-detail { font-size: 12px; color: var(--content-secondary); line-height: 1.5; }
-
-    /* ── EXPERIENCE GROUPED ── */
-    .exp-institution { padding-top: 1.25rem; }
-    .exp-institution:first-child { padding-top: 0; }
-    .exp-inst-name { font-size: 13px; font-weight: 700; margin-bottom: 0; padding: 5px 12px; display: block; width: 100%; }
-
-    /* ── ROW ITEM — role+date on one line, detail below ── */
-    .row-item {
-      padding: 12px 0; border-bottom: 0.5px solid var(--content-border);
-    }
-    .row-item:last-child { border-bottom: none; }
-    .row-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
-    .row-term { font-size: 12px; color: var(--content-tertiary); font-family: 'DM Mono', monospace; white-space: nowrap; flex-shrink: 0; }
-
-    /* ── PUB extras ── */
-    .pub-collab { font-size: 11px; color: var(--content-tertiary); font-style: italic; }
-    .pub-div { font-size: 11px; color: var(--content-tertiary); }
-
-    .exp-institution.tamu .row-item { background: rgba(80,0,0,0.035); padding-left: 0.5rem; padding-right: 0.5rem; }
-    .exp-institution.osu  .row-item { background: rgba(255,102,0,0.04); padding-left: 0.5rem; padding-right: 0.5rem;}
-
+    
     @media (max-width: 960px) {
       .sidebar { display: none; }
       .tb-nav { display: none; }
       .tb-hamburger { display: flex; }
       .mobile-strip { display: flex; }
-      .topbar { padding-left: 1.25rem; padding-right: 1.25rem; justify-content: space-between; }
-      .right-margin { display: none; }
-      .main-content { flex: 1; }
-      .layout { max-width: 100%; }
-      .ms-photo { width: 72px; height: auto; }
+      .topbar { padding-left: 1.25rem; padding-right: 1.25rem; }
     }
     @media (max-width: 600px) {
       .section { padding: 1.5rem 1.25rem; }
       .themes { grid-template-columns: 1fr; }
       .pub-row { grid-template-columns: 1fr; }
       .pub-thumb { display: none; }
-      .row-item { gap: 2px; }
-      .row-term { text-align: left; }
-      .edu-list { grid-template-columns: 1fr; }
-      .edu-item { border-right: none; border-bottom: 0.5px solid var(--content-border); }
-      .edu-item:last-child { border-bottom: none; }
-      .fellowship-list { grid-template-columns: 1fr; }
-      .teaching-service-grid { grid-template-columns: 1fr; }
-      .ms-photo { width: 44px; height: 44px; }
-      .bio { font-size: 17px; }
-    }
-    /* vertical/portrait monitor — between 600-960 */
-    @media (min-width: 601px) and (max-width: 960px) {
-      .themes { grid-template-columns: 1fr 1fr; }
-      .fellowship-list { grid-template-columns: 1fr 1fr; }
-      .section { padding: 2rem 1.75rem; }
+      .row-item { grid-template-columns: 1fr; gap: 4px; }
+      .edu-item { grid-template-columns: 52px 1fr; gap: 12px; }
     }
   </style>
 </head>
 <body>
 
   <header class="topbar">
-    <a href="/" class="tb-name" style="text-decoration:none;"><span class="tb-name-bold">Jobin</span> <span class="tb-name-light">Varughese</span></a>
+    <span class="tb-name"><span class="tb-name-bold">Jobin</span> <span class="tb-name-light">Varughese</span></span>
     <nav class="tb-nav">
       <a href="#research">research</a>
       <a href="#education">education</a>
@@ -607,15 +455,6 @@ border-radius: 0;
     </div>
   </header>
 
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" id="lbClose">✕</button>
-  <button class="lightbox-arrow lightbox-prev" id="lbPrev">‹</button>
-  <img class="lightbox-img" id="lbImg" src="" alt="">
-  <div class="lightbox-cap" id="lbCap"></div>
-  <button class="lightbox-arrow lightbox-next" id="lbNext">›</button>
-  <div class="lightbox-counter" id="lbCounter"></div>
-</div>
-  
   <!-- Mobile identity strip — visible when sidebar is hidden -->
   <div class="mobile-strip" id="mobileStrip">
     <div class="ms-photo">
@@ -623,20 +462,20 @@ border-radius: 0;
     </div>
     <div class="ms-info">
       <div class="ms-name">Jobin Varughese</div>
-      <div class="ms-role">Doctoral Researcher</div>
+      <div class="ms-role">Doctoral Researcher · Texas A&amp;M</div>
     </div>
     <div class="ms-links">
-      <a href="https://scholar.google.com" target="_blank" class="ms-link" aria-label="Google Scholar">
-        <i class="fas fa-graduation-cap" style="color:#4a8fff;font-size:15px;"></i>
+      <a href="https://scholar.google.com/citations?user=UTpkbWoAAAAJ&hl=en" target="_blank" class="ms-link" aria-label="Google Scholar">
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M6 1L1 4.5l5 3 5-3L6 1z" fill="#4a8fff"/><path d="M3 6v3c0 1.1 1.3 2 3 2s3-.9 3-2V6" stroke="#4a8fff" stroke-width="1" fill="none"/></svg>
       </a>
-      <a href="https://linkedin.com/in/jobin-varughese" target="_blank" class="ms-link" aria-label="LinkedIn">
-        <i class="fab fa-linkedin-in" style="color:#0a66c2;font-size:15px;"></i>
+      <a href="https://www.linkedin.com/in/jvarugh/" target="_blank" class="ms-link" aria-label="LinkedIn">
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="1" y="4" width="2" height="7" fill="#0a66c2"/><circle cx="2" cy="2" r="1" fill="#0a66c2"/><path d="M5 4v7M5 6.5c0-1.5 4-2 4 1v2.5" stroke="#0a66c2" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
       </a>
       <a href="https://github.com/jobin-varughese" target="_blank" class="ms-link" aria-label="GitHub">
-        <i class="fab fa-github" style="color:#1c1c2a;font-size:15px;"></i>
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><path d="M6 1a5 5 0 00-1.58 9.74c.25.05.34-.11.34-.24v-.85C3.08 9.9 2.76 8.8 2.76 8.8c-.23-.58-.56-.73-.56-.73-.46-.31.03-.31.03-.31.51.04.78.52.78.52.45.77 1.18.55 1.47.42.05-.33.18-.55.32-.68-1.12-.13-2.3-.56-2.3-2.49 0-.55.2-1 .52-1.35-.05-.13-.22-.64.05-1.33 0 0 .42-.14 1.38.52a4.8 4.8 0 012.5 0c.96-.66 1.38-.52 1.38-.52.27.69.1 1.2.05 1.33.32.35.52.8.52 1.35 0 1.94-1.18 2.36-2.3 2.49.18.16.34.47.34.95v1.4c0 .13.09.29.34.24A5 5 0 006 1z" fill="#1c1c2a"/></svg>
       </a>
       <a href="cv.pdf" target="_blank" class="ms-link" aria-label="Download CV">
-        <i class="fas fa-file-alt" style="color:#e89660;font-size:15px;"></i>
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><rect x="2" y="1" width="8" height="10" rx="1" stroke="#e89660" stroke-width="1" fill="none"/><line x1="4" y1="4" x2="8" y2="4" stroke="#e89660" stroke-width="1" stroke-linecap="round"/><line x1="4" y1="6" x2="8" y2="6" stroke="#e89660" stroke-width="1" stroke-linecap="round"/><line x1="4" y1="8" x2="6" y2="8" stroke="#e89660" stroke-width="1" stroke-linecap="round"/></svg>
       </a>
     </div>
   </div>
@@ -664,87 +503,66 @@ border-radius: 0;
   <div class="layout">
 
     <aside class="sidebar">
-      <div class="sb-photo">
-        <img src="headshotLI.jpg" alt="Jobin Varughese">
-      </div>
       <div class="sb-identity">
+        <div class="sb-photo">
+          <img src="headshotLI.jpg" alt="Jobin Varughese">
+        </div>
         <div class="sb-role">PhD Student, Computer Science</div>
         <div class="sb-role">Sr. Educational Data Analyst</div>
         <div class="sb-role-tamu">Texas A&amp;M University</div>
       </div>
 
       <div class="sb-divider"></div>
-      <div class="sb-section-label"><span class="sb-live-dot"></span>recent news</div>
+      <div class="sb-section-label">recent news</div>
       <div class="sb-news-wrap">
         <div class="sb-news">
           <div>
-  <div class="sb-news-header"><span class="sb-news-date">2026</span><span class="sb-tag tag-award">award</span></div>
-  <div class="sb-news-text">🏆 "Daily Quizzes for Computing Competency" nominated for Best DEI Paper — ASEE 2026</div>
-</div>
-          <div>
-            <div class="sb-news-header"><span class="sb-news-date">2026</span><span class="sb-tag tag-paper">paper</span></div>
-            <div class="sb-news-text">6 papers accepted at ASEE Annual Conference 2026</div>
+            <div class="sb-news-header"><span class="sb-news-date">Apr 2025</span><span class="sb-tag tag-paper">paper</span></div>
+            <div class="sb-news-text">Demo paper submitted to AIEd and Learning@Scale</div>
           </div>
           <div>
-            <div class="sb-news-header"><span class="sb-news-date">2026</span><span class="sb-tag tag-paper">paper</span></div>
-            <div class="sb-news-text">Paper accepted at IC2S2 2026 w/ UNC Charlotte</div>
+            <div class="sb-news-header"><span class="sb-news-date">Mar 2025</span><span class="sb-tag tag-talk">talk</span></div>
+            <div class="sb-news-text">Talk at CTE, Texas A&amp;M</div>
           </div>
           <div>
-            <div class="sb-news-header"><span class="sb-news-date">Summer 2025</span><span class="sb-tag tag-fellowship">fellowship</span></div>
-            <div class="sb-news-text">NSF SPLICE Fellow — CMU LearnLab, Computing Education Research Track</div>
+            <div class="sb-news-header"><span class="sb-news-date">Jan 2025</span><span class="sb-tag tag-role">role</span></div>
+            <div class="sb-news-text">Joined CTE as Graduate Student Technician</div>
           </div>
           <div>
-            <div class="sb-news-header"><span class="sb-news-date">Jun 2025</span><span class="sb-tag tag-talk">talk</span></div>
-            <div class="sb-news-text">3 presentations at TX A&amp;M Chancellor's Conference on Academic Technology</div>
+            <div class="sb-news-header"><span class="sb-news-date">2024</span><span class="sb-tag tag-role">milestone</span></div>
+            <div class="sb-news-text">Started PhD at Texas A&amp;M University</div>
           </div>
           <div>
-            <div class="sb-news-header"><span class="sb-news-date">Jun 2025</span><span class="sb-tag tag-talk">talk</span></div>
-            <div class="sb-news-text">Presented at SoLAR LAP 2025 — "Early Warnings, Early Wins"</div>
+            <div class="sb-news-header"><span class="sb-news-date">2023</span><span class="sb-tag tag-paper">paper</span></div>
+            <div class="sb-news-text">Paper accepted at ASEE Annual Conference</div>
           </div>
-<div>
-            <div class="sb-news-header"><span class="sb-news-date">May 2025</span><span class="sb-tag tag-role">milestone</span></div>
-            <div class="sb-news-text">Started PhD at Texas A&amp;M</div>
-          </div>
-          <div>
-            <div class="sb-news-header"><span class="sb-news-date">Feb 2025</span><span class="sb-tag tag-role">role</span></div>
-            <div class="sb-news-text">Promoted to Senior Educational Data Analyst at Texas A&amp;M</div>
-          </div>
-          <div>
-            <div class="sb-news-header"><span class="sb-news-date">2025</span><span class="sb-tag tag-grant">grant</span></div>
-            <div class="sb-news-text">Galloway Foundation Grant — $20,000 for learning analytics research</div>
-          </div>
-          <div>
-            <div class="sb-news-header"><span class="sb-news-date">Dec 2024</span><span class="sb-tag tag-cert">cert</span></div>
-            <div class="sb-news-text">Earned PMP Certification — Project Management Institute</div>
-          </div>
-          
         </div>
       </div>
 
       <div class="sb-bottom">
         <div class="sb-links-label">links</div>
         <div class="sb-links">
-          <a href="https://scholar.google.com" target="_blank" class="sb-link-btn" aria-label="Google Scholar">
+          <a href="https://scholar.google.com/citations?user=UTpkbWoAAAAJ&hl=en" target="_blank" class="sb-link-btn" aria-label="Google Scholar">
             <div class="sb-link-icon" style="background:#4a8fff22">
-              <i class="fas fa-graduation-cap" style="color:#4a8fff;font-size:11px;"></i>
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><path d="M6 1L1 4.5l5 3 5-3L6 1z" fill="#4a8fff"/><path d="M3 6v3c0 1.1 1.3 2 3 2s3-.9 3-2V6" stroke="#4a8fff" stroke-width="1" fill="none"/></svg>
             </div>
             <span class="sb-link-label">Google Scholar</span>
           </a>
-          <a href="https://linkedin.com/in/jobin-varughese" target="_blank" class="sb-link-btn" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/jvarugh/" target="_blank" class="sb-link-btn" aria-label="LinkedIn">
             <div class="sb-link-icon" style="background:#0a66c222">
-              <i class="fab fa-linkedin-in" style="color:#0a66c2;font-size:11px;"></i>
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><rect x="1" y="4" width="2" height="7" fill="#0a66c2"/><circle cx="2" cy="2" r="1" fill="#0a66c2"/><path d="M5 4v7M5 6.5c0-1.5 4-2 4 1v2.5" stroke="#0a66c2" stroke-width="1.2" fill="none" stroke-linecap="round"/></svg>
             </div>
             <span class="sb-link-label">LinkedIn</span>
           </a>
           <a href="https://github.com/jobin-varughese" target="_blank" class="sb-link-btn" aria-label="GitHub">
             <div class="sb-link-icon" style="background:#00000012">
-              <i class="fab fa-github" style="color:#1c1c2a;font-size:11px;"></i>
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><path d="M6 1a5 5 0 00-1.58 9.74c.25.05.34-.11.34-.24v-.85C3.08 9.9 2.76 8.8 2.76 8.8c-.23-.58-.56-.73-.56-.73-.46-.31.03-.31.03-.31.51.04.78.52.78.52.45.77 1.18.55 1.47.42.05-.33.18-.55.32-.68-1.12-.13-2.3-.56-2.3-2.49 0-.55.2-1 .52-1.35-.05-.13-.22-.64.05-1.33 0 0 .42-.14 1.38.52a4.8 4.8 0 012.5 0c.96-.66 1.38-.52 1.38-.52.27.69.1 1.2.05 1.33.32.35.52.8.52 1.35 0 1.94-1.18 2.36-2.3 2.49.18.16.34.47.34.95v1.4c0 .13.09.29.34.24A5 5 0 006 1z" fill="#1c1c2a"/></svg>
             </div>
             <span class="sb-link-label">GitHub</span>
           </a>
           <a href="cv.pdf" target="_blank" class="sb-link-btn" aria-label="Download CV">
             <div class="sb-link-icon" style="background:#e8966018">
-              <i class="fas fa-file-alt" style="color:#e89660;font-size:11px;"></i>
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><rect x="2" y="1" width="8" height="10" rx="1" stroke="#e89660" stroke-width="1" fill="none"/><line x1="4" y1="4" x2="8" y2="4" stroke="#e89660" stroke-width="1" stroke-linecap="round"/><line x1="4" y1="6" x2="8" y2="6" stroke="#e89660" stroke-width="1" stroke-linecap="round"/><line x1="4" y1="8" x2="6" y2="8" stroke="#e89660" stroke-width="1" stroke-linecap="round"/></svg>
             </div>
             <span class="sb-link-label">Download CV</span>
           </a>
@@ -752,40 +570,30 @@ border-radius: 0;
       </div>
     </aside>
 
-    <div class="right-panel">
     <main class="main-content">
       <div class="scroll-indicator" id="scrollIndicator">about</div>
 
       <section class="section" id="about">
-        <p class="bio">I observe, build, and study systems that <strong>learn how people learn</strong> — using behavioral data, AI, and human-centered design to make education more responsive, equitable, and evidence-driven for today's learner.</p>
+        <p class="bio">I design and study <strong>AI systems for education</strong> — building tools that are adaptive, equitable, and grounded in how people actually learn.</p>
       </section>
 
       <section class="section" id="research">
         <div class="section-head"><span class="section-label">research areas</span><div class="section-rule"></div></div>
         <div class="themes">
-          <div class="theme-card tc-cyan">
-            <div class="theme-header">
-              <div class="theme-name">AI in Education</div>
-            </div>
-            <div class="theme-body">
-              <div class="theme-desc">Studying how AI shapes the learning process, from adaptive systems and <strong>intelligent feedback</strong> to <strong>LLM-as-Judge</strong> evaluation frameworks, and the challenge of keeping the human meaningfully in the loop.</div>
-            </div>
+          <div class="theme-card">
+            <div class="theme-icon ti-cyan"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="4" fill="#5bbfbf" opacity=".8"/><circle cx="10" cy="3.5" r="2" fill="#5bbfbf" opacity=".4"/><circle cx="15.5" cy="13.5" r="2" fill="#5bbfbf" opacity=".4"/><circle cx="4.5" cy="13.5" r="2" fill="#5bbfbf" opacity=".4"/><line x1="10" y1="5.5" x2="10" y2="8" stroke="#5bbfbf" stroke-width="1"/><line x1="14" y1="12" x2="12" y2="11" stroke="#5bbfbf" stroke-width="1"/><line x1="6" y1="12" x2="8" y2="11" stroke="#5bbfbf" stroke-width="1"/></svg></div>
+            <div class="theme-name">AI in education</div>
+            <div class="theme-desc">Adaptive systems, intelligent tutoring, personalized learning pipelines</div>
           </div>
-          <div class="theme-card tc-lime">
-            <div class="theme-header">
-              <div class="theme-name">Learning Analytics</div>
-            </div>
-            <div class="theme-body">
-              <div class="theme-desc">The classroom generates more data than anyone knows what to do with. I work on the 'what to do with it' part — <strong>connecting behavioral signals and instructional design</strong> to surface patterns that help educators make better decisions.</div>
-            </div>
+          <div class="theme-card">
+            <div class="theme-icon ti-lime"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="13" width="3" height="5" rx="1" fill="#82c45e" opacity=".5"/><rect x="7" y="9" width="3" height="9" rx="1" fill="#82c45e" opacity=".7"/><rect x="12" y="5" width="3" height="13" rx="1" fill="#82c45e"/><polyline points="3.5,13 8.5,9 13.5,5 17,3" stroke="#82c45e" stroke-width="1.2" fill="none"/><circle cx="17" cy="3" r="1.5" fill="#82c45e"/></svg></div>
+            <div class="theme-name">learning analytics</div>
+            <div class="theme-desc">Behavioral data, student modeling, evidence-based interventions</div>
           </div>
-          <div class="theme-card tc-orange">
-            <div class="theme-header">
-              <div class="theme-name">Human-AI Interaction</div>
-            </div>
-            <div class="theme-body">
-              <div class="theme-desc">What happens when AI enters spaces that used to belong entirely to humans? I am curious about trust, transparency, ethics, and privacy and the design of systems that <strong>feel like help rather than surveillance</strong>.</div>
-            </div>
+          <div class="theme-card">
+            <div class="theme-icon ti-orange"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="10" rx="2" fill="none" stroke="#e89660" stroke-width="1.5"/><rect x="7" y="14" width="6" height="2" rx=".5" fill="#e89660"/><circle cx="7" cy="9" r="2" fill="#e89660" opacity=".7"/><line x1="10.5" y1="7" x2="15" y2="7" stroke="#e89660" stroke-width="1" stroke-linecap="round"/><line x1="10.5" y1="9" x2="15" y2="9" stroke="#e89660" stroke-width="1" stroke-linecap="round"/><line x1="10.5" y1="11" x2="13" y2="11" stroke="#e89660" stroke-width="1" stroke-linecap="round" opacity=".6"/></svg></div>
+            <div class="theme-name">human-AI interaction</div>
+            <div class="theme-desc">Interface design, cognitive load, accessible AI tools</div>
           </div>
         </div>
       </section>
@@ -793,162 +601,80 @@ border-radius: 0;
       <section class="section" id="publications">
         <div class="section-head"><span class="section-label">publications</span><div class="section-rule"></div></div>
         <div class="pub-list">
+          <div class="pub-row">
+            <div class="pub-thumb pt-cyan"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="6" fill="#5bbfbf" opacity=".7"/><circle cx="16" cy="6" r="3" fill="#5bbfbf" opacity=".4"/><circle cx="24" cy="21" r="3" fill="#5bbfbf" opacity=".4"/><circle cx="8" cy="21" r="3" fill="#5bbfbf" opacity=".4"/></svg></div>
+            <div>
+              <div class="pub-title">Your paper title — add your actual title here</div>
+              <div class="pub-authors">Jobin Varughese, Co-author Name · 2025</div>
+              <div class="pub-footer"><span class="pub-venue pv-cyan">AIEd 2025</span><a href="#" class="pub-link">paper</a><a href="#" class="pub-link">code</a><a href="#" class="pub-link">abstract</a></div>
+            </div>
+          </div>
+          <div class="pub-row">
+            <div class="pub-thumb pt-lime"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="3" y="21" width="5" height="8" rx="1.5" fill="#82c45e" opacity=".5"/><rect x="11" y="15" width="5" height="14" rx="1.5" fill="#82c45e" opacity=".7"/><rect x="19" y="9" width="5" height="20" rx="1.5" fill="#82c45e"/><polyline points="5.5,21 13.5,15 21.5,9 27,6" stroke="#82c45e" stroke-width="1.5" fill="none"/></svg></div>
+            <div>
+              <div class="pub-title">Your paper title — add your actual title here</div>
+              <div class="pub-authors">Jobin Varughese, Co-author Name · 2025</div>
+              <div class="pub-footer"><span class="pub-venue pv-lime">L@S 2025</span><a href="#" class="pub-link">paper</a><a href="#" class="pub-link">poster</a></div>
+            </div>
+          </div>
+          <div class="pub-row">
+            <div class="pub-thumb pt-orange"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="3" y="6" width="26" height="16" rx="3" fill="none" stroke="#e89660" stroke-width="1.5"/><rect x="11" y="22" width="10" height="3" rx="1" fill="#e89660"/><circle cx="11" cy="14" r="3.5" fill="#e89660" opacity=".7"/><line x1="17" y1="11" x2="25" y2="11" stroke="#e89660" stroke-width="1.2" stroke-linecap="round"/><line x1="17" y1="14" x2="25" y2="14" stroke="#e89660" stroke-width="1.2" stroke-linecap="round"/><line x1="17" y1="17" x2="22" y2="17" stroke="#e89660" stroke-width="1.2" stroke-linecap="round" opacity=".6"/></svg></div>
+            <div>
+              <div class="pub-title">Your paper title — add your actual title here</div>
+              <div class="pub-authors">Jobin Varughese, Co-author Name · 2025</div>
+              <div class="pub-footer"><span class="pub-venue pv-orange">ASEE 2025</span><a href="#" class="pub-link">paper</a></div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div class="pub-row">
-            <div class="pub-thumb pt-cyan"><!-- replace with: <img src="img/p1.jpg" alt="figure"> --></div>
+      <section class="section" id="education">
+        <div class="section-head"><span class="section-label">education</span><div class="section-rule"></div></div>
+        <div class="edu-list">
+          <div class="edu-item">
+            <div class="edu-logo"><img src="TAMUlogo.png" alt="Texas A&M University" style="width:56px;height:56px;object-fit:contain;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:box-shadow 0.2s;"></div>
             <div>
-              <div class="pub-title">When Behavioral Traces Mislead: Evaluating Evidence Adequacy in Learning Analytics</div>
-              <div class="pub-authors">Junhyeon Kwon*, <u><strong>Jobin Varughese</strong></u>*, Maria Teleki, Mohsen Dorodchi · 2026</div>
-              <div class="pub-footer">
-                <span class="pub-venue">IC2S2 2026</span>
-                <span class="pub-collab">w/ UNC Charlotte</span>
-                <a href="#" class="pub-link">paper</a>
-                <button class="pub-link" onclick="toggleExpand(this,'abs1')">abstract ↓</button>
-                <button class="pub-link" onclick="toggleExpand(this,'bib1')">bib ↓</button>
-              </div>
-              <div class="pub-expand" id="abs1">Add abstract here.</div>
-              <div class="pub-expand" id="bib1"><pre>@inproceedings{kwon2026behavioral,
-  title={When Behavioral Traces Mislead: Evaluating Evidence Adequacy in Learning Analytics},
-  author={Kwon, Junhyeon and Varughese, Jobin and Teleki, Maria and Dorodchi, Mohsen},
-  booktitle={Proceedings of IC2S2},
-  year={2026}
-}</pre></div>
+              <div class="edu-degree">PhD, Computer Science</div>
+              <div class="edu-field">Texas A&amp;M University</div>
+              <div class="edu-meta">2024 – present · College Station, TX</div>
             </div>
           </div>
+          <div class="edu-item">
+            <div class="edu-logo"><img src="OSUlogo.png" alt="Oklahoma State University" style="width:56px;height:56px;object-fit:contain;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:box-shadow 0.2s;"></div>
+            <div>
+              <div class="edu-degree">M.S., Management Information Systems</div>
+              <div class="edu-field">Data Science concentration · Oklahoma State University</div>
+              <div class="edu-meta">Oklahoma State University · Stillwater, OK</div>
+            </div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-logo"><img src="Christlogo.png" alt="Christ University" style="width:56px;height:56px;object-fit:contain;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.12);transition:box-shadow 0.2s;"></div>
+            <div>
+              <div class="edu-degree">B.S., Electronics &amp; Communication Engineering</div>
+              <div class="edu-field">Christ University · Bangalore, India</div>
+              <div class="edu-meta">Graduated 2015</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-           <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p2.jpg" alt="figure"> --></div>
+      <section class="section" id="experience">
+        <div class="section-head"><span class="section-label">experience</span><div class="section-rule"></div></div>
+        <div class="row-list">
+          <div class="row-item">
+            <span class="row-term">2022 – present</span>
             <div>
-              <div class="pub-title">Diagnosing Epistemic Frames in Digital Learning Environments Using Learning Analytics: Synthesis and Implications in Engineering Education</div>
-              <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Gibin Raju, Kristi J. Shryock · 2026</div>
-              <div class="pub-footer">
-                <span class="pub-venue">ASEE 2026</span>
-                <span class="pub-div">Computers in Education Division</span>
-                <a href="#" class="pub-link">paper</a>
-                <button class="pub-link" onclick="toggleExpand(this,'abs2')">abstract ↓</button>
-                <button class="pub-link" onclick="toggleExpand(this,'bib2')">bib ↓</button>
-              </div>
-              <div class="pub-expand" id="abs2">Add abstract here.</div>
-              <div class="pub-expand" id="bib2"><pre>@inproceedings{varughese2026epistemic,
-  title={Diagnosing Epistemic Frames in Digital Learning Environments Using Learning Analytics},
-  author={Varughese, Jobin and Raju, Gibin and Shryock, Kristi J.},
-  booktitle={ASEE Annual Conference},
-  year={2026}
-}</pre></div>
+              <div class="row-role">Senior Educational Data Analyst</div>
+              <div class="row-detail">Center for Teaching Excellence (CTE) · Texas A&amp;M University</div>
             </div>
           </div>
- 
-          <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p3.jpg" alt="figure"> --></div>
+          <div class="row-item">
+            <span class="row-term">Add dates</span>
             <div>
-              <div class="pub-title">Building a Methodology to Connect Course Design with Student Outcomes: A Framework for Engineering Education</div>
-              <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Gibin Raju, Yeonji Jung, Sunay Palsole · 2026</div>
-              <div class="pub-footer">
-                <span class="pub-venue">ASEE 2026</span>
-                <span class="pub-div">Educational Research and Methods Division</span>
-                <a href="#" class="pub-link">paper</a>
-                <button class="pub-link" onclick="toggleExpand(this,'abs3')">abstract ↓</button>
-                <button class="pub-link" onclick="toggleExpand(this,'bib3')">bib ↓</button>
-              </div>
-              <div class="pub-expand" id="abs3">Add abstract here.</div>
-              <div class="pub-expand" id="bib3"><pre>@inproceedings{varughese2026methodology,
-  title={Building a Methodology to Connect Course Design with Student Outcomes},
-  author={Varughese, Jobin and Raju, Gibin and Jung, Yeonji and Palsole, Sunay},
-  booktitle={ASEE Annual Conference},
-  year={2026}
-}</pre></div>
+              <div class="row-role">Previous Role Title</div>
+              <div class="row-detail">Organization · Location</div>
             </div>
           </div>
- 
-          <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p4.jpg" alt="figure"> --></div>
-            <div>
-              <div class="pub-title">Daily Quizzes for Computing Competency: Strengthening Fundamentals and Workforce Readiness in Senior Capstone</div>
-              <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u>, LaTasha T. Starr · 2026</div>
-              <div class="pub-footer">
-                <span class="pub-venue">ASEE 2026</span>
-                <span class="pub-div">Computing and Information Technology Division</span>
-                <span style="font-size:12px;background:#faf0e6;color:#7a3a10;border:0.5px solid #e89660;border-radius:4px;padding:2px 8px;font-weight:600;">🏆 Best DEI Paper Nominee</span>
-                <a href="#" class="pub-link">paper</a>
-                <button class="pub-link" onclick="toggleExpand(this,'abs4')">abstract ↓</button>
-                <button class="pub-link" onclick="toggleExpand(this,'bib4')">bib ↓</button>
-              </div>
-              <div class="pub-expand" id="abs4">Add abstract here.</div>
-              <div class="pub-expand" id="bib4"><pre>@inproceedings{hammond2026quizzes,
-  title={Daily Quizzes for Computing Competency},
-  author={Hammond, Tracy and Varughese, Jobin and Starr, LaTasha T.},
-  booktitle={ASEE Annual Conference},
-  year={2026}
-}</pre></div>
-            </div>
-          </div>
- 
-          <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p5.jpg" alt="figure"> --></div>
-            <div>
-              <div class="pub-title">Leveraging Graph Theory to Analyze Curriculum Structure and Student Navigation in Engineering Education</div>
-              <div class="pub-authors"><u><strong>Jobin Varughese</strong></u>, Yeonji Jung, Gibin Raju, Sunay Palsole · 2026</div>
-              <div class="pub-footer">
-                <span class="pub-venue">ASEE 2026</span>
-                <span class="pub-div">Data Science and Artificial Intelligence Division</span>
-                <a href="#" class="pub-link">paper</a>
-                <button class="pub-link" onclick="toggleExpand(this,'abs5')">abstract ↓</button>
-                <button class="pub-link" onclick="toggleExpand(this,'bib5')">bib ↓</button>
-              </div>
-              <div class="pub-expand" id="abs5">Add abstract here.</div>
-              <div class="pub-expand" id="bib5"><pre>@inproceedings{varughese2026graph,
-  title={Leveraging Graph Theory to Analyze Curriculum Structure and Student Navigation},
-  author={Varughese, Jobin and Jung, Yeonji and Raju, Gibin and Palsole, Sunay},
-  booktitle={ASEE Annual Conference},
-  year={2026}
-}</pre></div>
-            </div>
-          </div>
- 
-          <div class="pub-row">
-            <div class="pub-thumb pt-cyan"><!-- <img src="img/p6.jpg" alt="figure"> --></div>
-            <div>
-              <div class="pub-title">Teaching the Intuition Behind Artificial Intelligence: Understanding Before Automation</div>
-              <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u> · 2026</div>
-              <div class="pub-footer">
-                <span class="pub-venue">ASEE 2026</span>
-                <span class="pub-div">Data Science and Artificial Intelligence Division</span>
-                <a href="#" class="pub-link">paper</a>
-                <button class="pub-link" onclick="toggleExpand(this,'abs6')">abstract ↓</button>
-                <button class="pub-link" onclick="toggleExpand(this,'bib6')">bib ↓</button>
-              </div>
-              <div class="pub-expand" id="abs6">Add abstract here.</div>
-              <div class="pub-expand" id="bib6"><pre>@inproceedings{hammond2026teaching,
-  title={Teaching the Intuition Behind Artificial Intelligence: Understanding Before Automation},
-  author={Hammond, Tracy and Varughese, Jobin},
-  booktitle={ASEE Annual Conference},
-  year={2026}
-}</pre></div>
-            </div>
-          </div>
- 
-          <div class="pub-row">
-            <div class="pub-thumb pt-orange"><!-- <img src="img/p7.jpg" alt="figure"> --></div>
-            <div>
-              <div class="pub-title">How Engineering Students Describe Good Teammates: A Thematic Analysis of Peer Evaluations Across Multiple Capstone Cohorts</div>
-              <div class="pub-authors">Tracy Hammond, <u><strong>Jobin Varughese</strong></u> · 2026</div>
-              <div class="pub-footer">
-                <span class="pub-venue">ASEE 2026</span>
-                <span class="pub-div">Educational Research and Methods Division</span>
-                <a href="#" class="pub-link">paper</a>
-                <button class="pub-link" onclick="toggleExpand(this,'abs7')">abstract ↓</button>
-                <button class="pub-link" onclick="toggleExpand(this,'bib7')">bib ↓</button>
-              </div>
-              <div class="pub-expand" id="abs7">Add abstract here.</div>
-              <div class="pub-expand" id="bib7"><pre>@inproceedings{hammond2026teammates,
-  title={How Engineering Students Describe Good Teammates},
-  author={Hammond, Tracy and Varughese, Jobin},
-  booktitle={ASEE Annual Conference},
-  year={2026}
-}</pre></div>
-            </div>
-          </div>
- 
         </div>
       </section>
 
@@ -958,10 +684,18 @@ border-radius: 0;
             <div class="section-head"><span class="section-label">teaching</span><div class="section-rule"></div></div>
             <div class="row-list">
               <div class="row-item">
-              <div class="row-header"><div class="row-role">Guest Lecturer</div></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>MGMT 621 · Research Methods for HR · Mays Business School</span><span class="row-term">Fall 2025</span></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>PSAA 450 · Using Data to Make a Difference · Bush School of Public Policy</span><span class="row-term">Fall 2025</span></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>EHRD 490 · Research in HRD/TCM · College of Education &amp; Human Development</span><span class="row-term">Fall 2024</span></div>
+                <span class="row-term">2024 – present</span>
+                <div>
+                  <div class="row-role">Graduate Student Technician</div>
+                  <div class="row-detail">Center for Teaching Excellence (CTE) · Texas A&amp;M University</div>
+                </div>
+              </div>
+              <div class="row-item">
+                <span class="row-term">ongoing</span>
+                <div>
+                  <div class="row-role">Teaching Assistant</div>
+                  <div class="row-detail">Dept. of Computer Science &amp; Engineering · Texas A&amp;M University</div>
+                </div>
               </div>
             </div>
           </div>
@@ -969,17 +703,18 @@ border-radius: 0;
             <div class="section-head" id="service"><span class="section-label">service</span><div class="section-rule"></div></div>
             <div class="row-list">
               <div class="row-item">
-              <div class="row-header"><div class="row-role">Program Committee (Reviewer)</div></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>AI in Education Conference</span><span class="row-term">2026</span></div>
+                <span class="row-term">AIEd · L@S · LAK</span>
+                <div>
+                  <div class="row-role">Reviewer</div>
+                  <div class="row-detail">Program committee reviewer for AI in Education, Learning@Scale, and Learning Analytics &amp; Knowledge</div>
+                </div>
               </div>
               <div class="row-item">
-              <div class="row-header"><div class="row-role">Peer Reviewer</div></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>American Society for Engineering Education Annual Conference</span><span class="row-term">2025, 2026</span></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>Journal of Teaching and Learning with Technology</span><span class="row-term">2025</span></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>Frontiers in Education (FIE)</span><span class="row-term">2025</span></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>EDUCAUSE Annual Conference</span><span class="row-term">2025</span></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>Learning Analytics &amp; Knowledge (LAK)</span><span class="row-term">2025</span></div>
-              <div class="row-detail" style="display:flex;justify-content:space-between;"><span>Learning@Scale (L@S)</span><span class="row-term">2025</span></div>
+                <span class="row-term">CTE · TAMU</span>
+                <div>
+                  <div class="row-role">Learning Analytics Team</div>
+                  <div class="row-detail">Contributing to learning analytics research and student support at the Center for Teaching Excellence</div>
+                </div>
               </div>
             </div>
           </div>
@@ -1019,47 +754,32 @@ border-radius: 0;
           <div class="film-scroll-wrap" id="filmFrames">
             <div class="film-frames">
               <div class="film-frame">
-                <div class="film-img"><img src="img/CMULL1.jpg" alt="CMU LearnLab"></div>
-                <div class="film-cap">With Dr. Dorodchi at CMU LearnLab 2025</div>
+                <div class="film-img"><!-- <img src="photo1.jpg" alt="CHI 2025"> --></div>
+                <div class="film-cap">CHI 2025 · Barcelona</div>
               </div>
               <div class="film-frame">
-                <div class="film-img"><img src="img/CMULL2.jpg" alt="CMU LearnLab"></div>
-                <div class="film-cap">Presenting at CMU LearnLab</div>
+                <div class="film-img"><!-- <img src="koda1.jpg" alt="Koda"> --></div>
+                <div class="film-cap">Koda · good boy</div>
               </div>
               <div class="film-frame">
-                <div class="film-img"><img src="img/CMULL3.jpg" alt="CMU LearnLab"></div>
-                <div class="film-cap">CER Track at CMU LearnLab Summer Schoool</div>
-              </div>
-              
-<div class="film-frame">
-  <div class="film-img"><img src="img/Team presentation.jpg" alt="Presenting to faculty"></div>
-  <div class="film-cap">Presenting to stakeholders · TAMU</div>
-</div>
-              
-              <div class="film-frame">
-                <div class="film-img"><img src="img/IC251.jpg" alt="IC2S2 2025"></div>
-                <div class="film-cap">Pre-conference planning committee InstCon 2025</div>
+                <div class="film-img"><!-- <img src="poster.jpg" alt="L@S poster"> --></div>
+                <div class="film-cap">L@S · poster session</div>
               </div>
               <div class="film-frame">
-                <div class="film-img"><img src="img/IC252.jpg" alt="IC2S2 2025"></div>
-                <div class="film-cap">Facilitating Analytics round table</div>
+                <div class="film-img"><!-- <img src="tamu.jpg" alt="TAMU campus"> --></div>
+                <div class="film-cap">Texas A&amp;M · campus life</div>
               </div>
               <div class="film-frame">
-                <div class="film-img"><img src="img/IC253.jpg" alt="IC2S2 2025"></div>
-                <div class="film-cap">With R1 peers and Poll Everywhere</div>
+                <div class="film-img"><!-- <img src="lab.jpg" alt="lab"> --></div>
+                <div class="film-cap">lab · late nights</div>
               </div>
               <div class="film-frame">
-  <div class="film-img"><img src="img/Audio recording for instruction.jpg" alt="Recording at CTE"></div>
-  <div class="film-cap">Audio recording · Texas A&M</div>
-</div>
-
-<div class="film-frame">
-  <div class="film-img"><img src="img/Instructional material recording.jpg" alt="On camera"></div>
-  <div class="film-cap">On camera · instructional media</div>
-</div>
+                <div class="film-img"><!-- <img src="koda2.jpg" alt="Koda walk"> --></div>
+                <div class="film-cap">Koda · 2am walks</div>
+              </div>
               <div class="film-frame">
-                <div class="film-img"><img src="img/IC24.jpg" alt="IC2S2"></div>
-                <div class="film-cap">With colleagues at InstCon 2024</div>
+                <div class="film-img"><!-- <img src="conf.jpg" alt="conference"> --></div>
+                <div class="film-cap">add your photo</div>
               </div>
             </div>
             <div class="film-holes bottom" id="filmHolesBot"></div>
@@ -1068,10 +788,7 @@ border-radius: 0;
       </section>
 
     </main>
-    <div class="right-margin"></div>
-    </div>
   </div>
-
 
   <script>
     const hamburger = document.getElementById('hamburger');
@@ -1089,57 +806,6 @@ border-radius: 0;
       if (open && !drawer.contains(e.target) && !hamburger.contains(e.target)) closeDrawer();
     });
 
-    // ── EXPANDABLE ABSTRACT / BIB ──
-    function toggleExpand(btn, id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const isOpen = el.classList.toggle('open');
-      btn.textContent = btn.textContent.includes('abstract')
-        ? (isOpen ? 'abstract ↑' : 'abstract ↓')
-        : (isOpen ? 'bib ↑' : 'bib ↓');
-    }
-
-const lightbox  = document.getElementById('lightbox');
-const lbImg     = document.getElementById('lbImg');
-const lbCap     = document.getElementById('lbCap');
-const lbCounter = document.getElementById('lbCounter');
-const lbClose   = document.getElementById('lbClose');
-const lbPrev    = document.getElementById('lbPrev');
-const lbNext    = document.getElementById('lbNext');
-const frames    = Array.from(document.querySelectorAll('.film-frame'));
-let current = 0;
-
-function openLightbox(index) {
-  current = index;
-  const frame = frames[current];
-  const img = frame.querySelector('img');
-  const cap = frame.querySelector('.film-cap');
-  lbImg.src = img ? img.src : '';
-  lbImg.alt = img ? img.alt : '';
-  lbCap.textContent = cap ? cap.textContent : '';
-  lbCounter.textContent = `${current + 1} / ${frames.length}`;
-  lightbox.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  document.body.style.overflow = '';
-}
-function showPrev() { openLightbox((current - 1 + frames.length) % frames.length); }
-function showNext() { openLightbox((current + 1) % frames.length); }
-
-frames.forEach((frame, i) => frame.addEventListener('click', () => openLightbox(i)));
-lbClose.addEventListener('click', closeLightbox);
-lbPrev.addEventListener('click', showPrev);
-lbNext.addEventListener('click', showNext);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
-document.addEventListener('keydown', e => {
-  if (!lightbox.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLightbox();
-  if (e.key === 'ArrowLeft') showPrev();
-  if (e.key === 'ArrowRight') showNext();
-});
-    
     // ── STICKY SECTION LABEL ──
     const indicator = document.getElementById('scrollIndicator');
     const sections = document.querySelectorAll('main .section[id], main .film-section[id]');
